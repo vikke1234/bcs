@@ -1,25 +1,56 @@
 \documentclass{paper}
-
+\usepackage{hyperref}
+\usepackage{graphicx}
 \usepackage[
 backend=biber,
 style=numeric,
 sorting=ynt
 ]{biblatex}
 
+\graphicspath{{./images/}}
 \addbibresource{refs.bib}
 
-\title{}
+\title{TBD}
 \author{Viktor Horsmanheimo}
 \date{\today}
 
 \begin{document}
 \maketitle
-
 \tableofcontents
+\newpage
 
-\section{Intruction}
+\section{Introduction}
+Field programmable gate arrays(FPGA) have become more popular in the past few
+decades. FPGAs essentially are chips that unlike standard ones for example
+CPUs, are programmable after manufacturing. FPGAs consist of logic gate arrays
+which perform simple boolean algebra. Between these gates we have interconnect
+which allows the data to be moved between the logic gates. We will go into
+details about the internals of these components in the next section.
+
+FPGAs were created in the 80s by Altera, at the time they weren't very
+practical because the size of the transistors were very large. This meant that
+you couldn't fit very much on a reasonably sized chip. But as we know with
+Moore's law the transistor size halves every two years, this has affected FPGAs
+as well and now contains enough transistors to compete with application
+specific integrated circuits (ASIC). ASICs are in general faster than FPGAs if
+you are working with the latest technology. Due to the fact that it is risky to
+work with the newest technology, manufacturers rarely use it. This is where
+FPGAs are useful, since they're reprogrammable they can always use the latest
+technology. If something goes wrong you can always change it. This is one of
+the biggest reasons FPGAs have become increasingly popular.
+
 \section{Outline}
+
 \section{FPGA}
+\subsection{Components}
+In the introduction we talked about FPGAs consisting of
+logic gates, we are now going to go into more detail about how they work. As we
+know any boolean algebra function can be expressed as a lookup
+table\cite{m_d_mano_digital_2012}. Because of this property FPGAs extensively
+use lookup tables(LUT). The way LUTs are implemented are using multiplexers,
+they map a number of inputs to a single output. There's been a lot of testing
+as to how many inputs a LUT should take.
 
 \printbibliography
+
 \end{document}
