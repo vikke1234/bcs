@@ -1,0 +1,25 @@
+\chapter{Introduction\label{intro}}
+
+Field programmable gate arrays (FPGA) have become increasingly more popular in
+the past few decades. FPGAs are chips that unlike standard ones for example
+CPUs, are programmable after manufacturing. FPGAs consist of logic gate arrays
+which evaluate simple boolean function. Between these gates we have wires and
+control blocks which allows the data to be moved between the logic gates. We
+will present the internals of these components in the next section.
+
+FPGAs were created in the 80s by Altera, at that time they weren't very
+practical because the size of the transistors were very large. This meant that
+you couldn't fit very much on a reasonably sized chip. Moore's law states that
+the transistor size halves every two years, this has affected FPGAs as well and
+now they contain enough transistors to compete with application specific
+integrated circuits (ASIC). ASICs are hardware that is made specifically for a
+task, for example cryptographic currency mining hardware. These chips are in
+general faster than FPGAs if you are working with the latest technology. Due to
+the fact that it is risky to work with the newest technology, manufacturers
+rarely use it. This is where FPGAs are useful, since they're reprogrammable
+they can always use the latest technology. If something goes wrong you can
+always change it. Because of this FPGAs continue to rise in popularity. % TODO add picture of ASIC vs FPGA nano meters
+
+\section{Outline\label{outline}}
+In section \ref{FPGA} we will go into detail about how FPGAs work
+internally, how they're configured and the technologies behind it.
