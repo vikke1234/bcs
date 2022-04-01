@@ -3,7 +3,8 @@
 \PassOptionsToClass{openany,twoside,a4paper}{report}
 
 \usepackage{csquotes}
-\usepackage[style=numeric,bibstyle=numeric,backend=biber,natbib=true,maxbibnames=99,giveninits=true,uniquename=init]{biblatex}
+\usepackage[style=authoryear,bibstyle=authoryear,backend=biber,natbib=true,maxnames=99,maxcitenames=2,uniquelist=minyear,giveninits=true,uniquename=mininit]{biblatex}
+%\usepackage[style=numeric,bibstyle=numeric,backend=biber,natbib=true,maxbibnames=99,giveninits=true,uniquename=init]{biblatex}
 
 \addbibresource{bibliography.bib}
 \DeclareNameAlias{sortname}{family-given}
@@ -11,16 +12,17 @@
 \usepackage[utf8]{inputenc} % For UTF8 support, in some systems. Use UTF8 when saving your file.
 
 \usepackage{xr-hyper}
+\usepackage{amsthm}
 \usepackage{lmodern}         % Font package, again in some systems.
 \usepackage{textcomp}        % Package for special symbols
 \usepackage{float}
 \usepackage[pdftex]{color, graphicx} % For pdf output and jpg/png graphics
 \usepackage{epsfig}
-\usepackage{subfigure}
 \usepackage[pdftex, plainpages=false]{hyperref} % For hyperlinks and pdf metadata
 \usepackage{fancyhdr}        % For nicer page headers
 \usepackage{tikz}            % For making vector graphics (hard to learn but powerful)
 \usepackage{amsmath, amssymb} % For better math
+\usepackage{subcaption}
 
 \singlespacing               %line spacing options; normally use single
 
@@ -77,6 +79,11 @@
 
 %%-----------------------------------------------------------------------------------
 
+% Theorems
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
 \begin{document}
 
 % Generate title page.
@@ -96,34 +103,14 @@
 %\newpage
 \mytableofcontents
 
-
 \mainmatter
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% STEP 4: Write the thesis.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Your actual text starts here. You shouldn't mess with the code above the line except
-%% to change the parameters. Removing the abstract and ToC commands will mess up stuff.
-%%
-%% Command \include{file} includes the file of name file.tex.
-%% A new page will be created at every \include command,
-%% which makes it appropriate to use it for large entities such as book chapters. Cannot be nested.
-%% It is useful for a big project, as changing one of the include targets
-%% won't force the regeneration of the outputs of all the rest.
-%% Alternatively, \input is a more lower level macro
-%% which simply inputs the content of the given file like it was copy&pasted there manually.
-
-%% Change your chapter titles within these files and add the actual text in them.
 
 \include{Ch.10_Introduction}
 \include{Ch.20_FPGA}
-\include{Ch.40_Evaluative_discussion}
+\include{Ch.40_Cryptography}
 \include{Ch.50_Conclusions}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\cleardoublepage                          %fixes the position of bibliography in bookmarks
-%\phantomsection
-\addcontentsline{toc}{chapter}{\bibname}  % This lines adds the bibliography to the ToC
+\addcontentsline{toc}{chapter}{\bibname}
 \printbibliography
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

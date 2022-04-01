@@ -8,63 +8,93 @@ processors and multipliers though we will not cover those.
 \section{Components}
 \subsection{Lookup tables}
 
-In boolean algebra we can represent a function as a truth table of size $2^N$
-where $N$ is the amount of variables in the function. This translates directly
-to binary and because of this property FPGAs extensively use lookup
-tables(LUT). The way LUTs are implemented are using $N:1$ multiplexers and
-$N$-bits of memory, it stores all the answers of the LUT in memory. Then the
-multiplexer takes $N$ inputs and maps it to the LUTs answer. For example if we
-have the following function.
+Before we get into how lookup tables work, we'll cover the mathematics behind
+it.
 
-$$A + B \times C$$
+\begin{definition}
+    A \textit{boolean function} is a function that deals with two element sets
+    $\{0,\ 1\}$, $\{\text{true},\ \text{false}\}$ etc.
 
-There are $2^3 = 8$ different answers to the function. We then
-store all of these answers in memory in a table as similar to what is seen in
-table \ref{tab:example_truth_table}.
+    We can define a function $f$ to be a function of form
 
-\begin{table}[ht]
+    \[f \colon \{0,\ 1\}^N \rightarrow \{0,\ 1\}\]
+
+\end{definition}
+
+\begin{example}
+    Any boolean function can be represented as a \textit{truth table} of size $2^N$
+    where $N$ is the number of variables in the function.
+
+    \[
+    f \colon \{0,\ 1\}^3 \rightarrow \{0,\ 1\}, \quad (A, B, C) \mapsto A + BC
+    \]
+
+    There are $2^3 = 8$ different answers to this function. So what we get is
+    a truth table that looks like shown in Table \ref{tab:example_truth_table}.
+    In an ASIC we could implement this using logic gates, it would look as seen
+    in Figure \ref{fig:logic_gate_impl}.
+
+\begin{figure}
+    \begin{subfigure}[b]{.4\textwidth}
     \centering
-    \begin{tabular}{|l|l|l|l|}
-        \hline
-        A & B & C & Out \\ \hline
-        0 & 0 & 0 & 0   \\ \hline
-        0 & 0 & 1 & 1   \\ \hline
-        0 & 1 & 0 & 0   \\ \hline
-        0 & 1 & 1 & 1   \\ \hline
-        1 & 0 & 0 & 0   \\ \hline
-        1 & 0 & 1 & 1   \\ \hline
-        1 & 1 & 0 & 1   \\ \hline
-        1 & 1 & 1 & 1   \\ \hline
-    \end{tabular}
-    \caption{Example truth table}
-    \label{tab:example_truth_table}
-\end{table}
+        \includegraphics[scale=0.6]{circuit.png}
+        \caption{Logic gate implementation of the function}
+        \label{fig:logic_gate_impl}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{.4\textwidth}
+    \centering
+        \begin{tabular}{|l|l|l|l|}
+            \hline
+            A & B & C & Out \\ \hline
+            0 & 0 & 0 & 0   \\ \hline
+            0 & 0 & 1 & 1   \\ \hline
+            0 & 1 & 0 & 0   \\ \hline
+            0 & 1 & 1 & 1   \\ \hline
+            1 & 0 & 0 & 0   \\ \hline
+            1 & 0 & 1 & 1   \\ \hline
+            1 & 1 & 0 & 1   \\ \hline
+            1 & 1 & 1 & 1   \\ \hline
+        \end{tabular}
+        \caption{Truth table for the function}
+        \label{tab:example_truth_table}
+    \end{subfigure}
+\end{figure}
+
+\end{example}
+
+\hrule
+
+Because truth tables can very easily be represented in continuous memory as
+lookup tables. This is what allows for FPGAs to be reconfigured, by replacing
+the values in the lookup tables we can make it evaluate another function. The
+way LUTs are implemented are using $N:1$ multiplexers and $N$-bits of memory,
+it stores all the answers of the LUT in memory. Then the multiplexer takes $N$
+inputs and maps it to the LUTs answer.
 
 % flip flops
 This alone isn't enough to be able to implement everything as we cannot store
 state. What we need is some way to store information, this is where delay(D)
 flip-flops come in. Here we have an example of how an FPGA might use a
-flip-flop as seen in Figure \ref{fig:lut_flipflop}. They can store a single bit of data, with
-this the chip can store state and is now complete.
+flip-flop as seen in Figure \ref{fig:lut_flipflop}. They can store a single bit
+of data.
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.6]{lookup_table_flipflop.png}
-    \caption{An example of how a lookup table could be implemented \cite{m_d_mano_digital_2012}}
+    \caption{An example of how a lookup table could be implemented \citep{M.MorrisMano3}}
     \label{fig:lut_flipflop}
 \end{figure}
 
-These LUTs are what allow for FPGAs to be reconfigured. By simply writing to
-the tables the correct values it allows the chip to implement any function.
 There's been studies done about how many LUTs a logic block should contain, if
 there were more LUTs it would allow for more complex logic. Though adding more
-inputs would also make the chip slower \cite{amano_principles_2018}.
+inputs would also make the chip slower \citep{HideharuAmano8}.
 
 \begin{figure}[H]
     \centering
     \label{fig:fpga_structure}
     \includegraphics[scale=0.7]{fpga_structure.png}
-    \caption{An example of an island-style FPGA\cite{m_d_mano_digital_2012}}
+    \caption{An example of an island-style FPGA\citep{M.MorrisMano3}}
 \end{figure}
 
 \subsection{Input/Output blocks}
@@ -91,7 +121,7 @@ FPGAs have four different types of interconnects: long lines, hex lines, double
 lines and direct lines. The direct lines are to connect neighboring logic gates
 for fast transfer. Hex and double lines connect logic gates that are a medium
 length away. Long lines go along the entire chip and are often used for global
-signals \cite{amano_principles_2018}.
+signals \citep{HideharuAmano8}.
 
 
 \section{Configuration}
@@ -105,7 +135,7 @@ because it is fast and has infinite reconfiguration. The issues with SRAM is
 that it's volatile which means that if power is lost so is the configuration.
 Another issue is power consumption, as the SRAM cell contains 6-12 transistors
 compared to flash memory which only requires roughly two transistors
-\cite{amano_principles_2018}.
+\citep{HideharuAmano8}.
 
 \subsection{Flash memory}
 Flash memory is a way to store the configuration in memory without needing
@@ -113,7 +143,7 @@ power for the chip to remember it. It works by having electrically erasable
 programmable read-only memory, it's benefit is that the configuration can be
 remembered even if the device is powered off. The downside is that there's only
 a limited amount of writes before it fails and that flash is often slower at
-writing than SRAM \cite{m_d_mano_digital_2012}.
+writing than SRAM \citep{M.MorrisMano3}.
 
 \subsection{Antifuse}
 An antifuse is the opposite of a fuse, it works by having high resistance and
