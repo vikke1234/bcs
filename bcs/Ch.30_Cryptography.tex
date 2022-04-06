@@ -1,0 +1,31 @@
+% What is symmetric and assymetric cryptography
+\chapter{Cryptography\label{crypto}}
+Cryptography has always been important, it is been used since ancient times to
+secure communication. In today's world where we have a lot of information that % TODO rewrite: it is especially important in today's world
+needs to get from place to place it is especially important to make sure that
+it is not tampered with. We have lots of ways to make sure that it gets
+transported safely, in this chapter we are going to give an overview about
+different kinds of cryptography and how it can be used in junction with FPGAs.
+FPGAs can make for example hash functions among other things faster. With
+quantum computers coming soon the cryptographic functions we have now, for
+example RSA can be broken in polynomial time.
+
+\section{Public key cryptography}
+\textit{Public key cryptography} is works by having having two sets of public- and
+private keys. Before the 1976 public key cryptography was quite difficult there
+were no good way to exchange keys. Everything changed when the Diffie and
+Hellman key exchange was invented \citep[Ch. 2]{FranciscoRodriguez-Henriquez10}. This
+allowed for keys to be exchanged quickly and securely.
+
+\subsection{Asymmetric cryptography}
+\textit{Asymmetric encryption} is a type of encryption that utilizes these two
+keys, it encrypts using the private key and decrypts with the private one.
+A modern implementation of this is for example AES.
+
+
+\subsection{Symmetric cryptography}
+\textit{Symmetric cryptography} is a little different than asymmetric
+cryptography, it only uses one key for both encryption and decryption. Today
+there are two different types of symmetric cryptography, stream and block
+ciphers. Stream ciphers work
+

@@ -7,6 +7,10 @@
 %\usepackage[style=numeric,bibstyle=numeric,backend=biber,natbib=true,maxbibnames=99,giveninits=true,uniquename=init]{biblatex}
 
 \addbibresource{bibliography.bib}
+\setcounter{biburlnumpenalty}{9000}
+\setcounter{biburllcpenalty}{9000}
+\setcounter{biburlucpenalty}{9000}
+
 \DeclareNameAlias{sortname}{family-given}
 
 \usepackage[utf8]{inputenc} % For UTF8 support, in some systems. Use UTF8 when saving your file.
@@ -31,7 +35,7 @@
 \overfullrule=1mm
 
 
-\title{TBD}
+\title{FPGA implementation of encryption schemes}
 \author{Viktor Horsmanheimo}
 \date{\today}
 
@@ -63,7 +67,7 @@
     pdfmenubar=true,        % show Acrobat’s menu
     pdffitwindow=false,     % window fit to page when opened
     pdfstartview={FitH},    % fits the width of the page to the window
-    pdftitle={TBD},            % title
+    pdftitle={FPGA implementation of encryption schemes},            % title
     pdfauthor={Viktor Horsmanheimo},           % author
     pdfsubject={FPGA uses in cryptography},          % subject of the document
     pdfcreator={Viktor Horsmanheimo},          % creator of the document
@@ -106,8 +110,9 @@
 \mainmatter
 
 \include{Ch.10_Introduction}
+% TODO fix picture placement
 \include{Ch.20_FPGA}
-\include{Ch.40_Cryptography}
+\include{Ch.30_Cryptography}
 \include{Ch.50_Conclusions}
 
 \addcontentsline{toc}{chapter}{\bibname}

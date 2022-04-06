@@ -1,30 +1,28 @@
 \chapter{Introduction\label{intro}}
 
-Field programmable gate arrays (FPGA) are chips that unlike standard ones such as
-CPUs, are programmable after manufacturing. Because of this they have
-become increasingly more popular in the past few decades. FPGAs consist of
-logic gate arrays which in theory can evaluate any boolean function. Between
-these gates we have wires and control blocks which allow the data to be moved
-between the logic gates. We will present the internals of these components in
-the next section.
+\textit{Field Programmable Gate Arrays} (FPGA) are chips that unlike standard
+ones such as CPUs, are programmable after manufacturing. Because of this they
+have become increasingly more popular in the past few decades. FPGAs consist of
+logic gate arrays which in theory can evaluate any boolean function. In this
+thesis we will give an overview on FPGAs with a focus on cryptography.
 
-FPGAs were created in the 80s by Altera, at that time they weren't very
+FPGAs were developed in the 80s by Altera, at that time they were not very
 practical due to the size of the transistors being very large. This meant that
-a chip couldn't fit many transistors and were limited in what they could
-do. Moore's law states that the transistor size halves every two years, this
-has affected FPGAs as well and they now contain enough transistors to compete
-with application specific integrated circuits (ASIC). An ASIC is a type of
+a chip could not fit many transistors and were limited in what they could do.
+Moore's law states that the transistor size halves every two years, this has
+affected FPGAs as well and they now contain enough transistors to compete with
+\textit{Application Specific Integrated Circuits} (ASIC). An ASIC is a type of
 hardware that is made specifically for a task, for example cryptographic
 currency mining hardware. These chips are in general faster and use less energy
-than FPGAs if the manufacturer is working with the latest technology. But
-because ASICs cost a lot of money to create and if something goes wrong with
-the chip it cannot be programmatically fixed. It is extremely expensive to
-rectify such a mistake. This is where FPGAs are very useful as they're
-reprogrammable, ASICs can be first implemented on an FPGA and once the chip has
-been verified that it works, it can be ported to an ASIC.
+than FPGAs if the manufacturer is working with the latest technology. ASICs are
+costly, if anything goes wrong after production it is extremely expensive to
+rectify such a mistake. This is where FPGAs are very useful as they are
+reprogrammable, ASICs can be first implemented on an FPGA. Once the chip has
+been verified that it works, it can be ported to an ASIC. This minimizes the
+amount of bugs found after the ASIC is manufactured.
 
 \section{Outline\label{outline}}
-In section \ref{FPGA} we will go into detail about how FPGAs work
-internally, how they're configured and the technologies behind it. In
-\ref{crypto} we will give an overview about crypto and how reconfigurable
-hardware can be used with it.
+In Chapter \ref{FPGA} we will go into detail about how FPGAs work internally,
+how they are configured and the technologies behind it. In Chapter \ref{crypto}
+we will give an overview about symmetric, asymmetric cryptography and how
+reconfigurable hardware can be used with it.
