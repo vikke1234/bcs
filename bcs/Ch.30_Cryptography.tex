@@ -1,31 +1,56 @@
 % What is symmetric and assymetric cryptography
 \chapter{Cryptography\label{crypto}}
 Cryptography has always been important, it is been used since ancient times to
-secure communication. In today's world where we have a lot of information that % TODO rewrite: it is especially important in today's world
-needs to get from place to place it is especially important to make sure that
-it is not tampered with. We have lots of ways to make sure that it gets
-transported safely, in this chapter we are going to give an overview about
-different kinds of cryptography and how it can be used in junction with FPGAs.
-FPGAs can make for example hash functions among other things faster. With
-quantum computers coming soon the cryptographic functions we have now, for
-example RSA can be broken in polynomial time.
+secure communication. Cryptography can be used for a number of things like
+verifying data integrity i.e making sure that the data is not sent by an outside
+party etc. Especially in today's world where vast amounts of information is
+constantly transferred where tampering with information can have catastrophic
+consequences. Thankfully cryptography gives us the tools to safely distribute
+and receive information. In this chapter we will discuss different forms of
+cryptography . FPGAs can make for example hash functions among other things
+faster. With quantum computers in development the current cryptographic schemes
+will be obsolete as, for example RSA can be broken in polynomial time.
+
+One of the earliest forms of cryptography was the Ceasar cipher, invented by
+Julius Ceasar in ancient Rome. The Ceasar cipher is a \textit{secret key
+cryptography} where users agree on a key that is used to encrypt and decrypt
+messages. The cipher is based around shifting letters by $N$ letters in the
+alphabet. The Romans only had to agree on how many letters they should shift. A
+modern example of a secret key encryption scheme is \textit{Data Encryption
+Algorithm} (DEA) which used 56 bit keys which is way too small and is being
+deprecated. The issue in today's world is exchanging keys in order to keep the
+decryption keys secret. As means for keeping single decryption keys secret have
+minimized \textit{public key cryptography} has become extremely useful
+\citep{FranciscoRodriguez-Henriquez10}.
+
+There are two types of ciphers, stream- and block ciphers. A stream cipher is
+a type of cipher that encrypts a bit or in some scenarios a byte at a time.
+While block ciphers take a block of data and transform into an unreadable block
+of the same length.
 
 \section{Public key cryptography}
-\textit{Public key cryptography} is works by having having two sets of public- and
-private keys. Before the 1976 public key cryptography was quite difficult there
-were no good way to exchange keys. Everything changed when the Diffie and
-Hellman key exchange was invented \citep[Ch. 2]{FranciscoRodriguez-Henriquez10}. This
-allowed for keys to be exchanged quickly and securely.
+Cryptography was revolutionized in 1976 when the Diffie and Hellman key
+exchange was invented. It solved the issues of exchanging keys as well as
+providing the means to implement authentication. Public key cryptography is a
+type of cryptography that works by having two sets of keys, a public- and a
+private key that are used for encryption and decryption. When we encrypt
+something we assume some operation is hard for a computer to reverse. Due to
+the recent developments in quantum computing some of the problems we considered
+hard, such as integer factorization are no longer hard. There are new problems
+that are hard even for quantum computers, such as the \textit{Ring Learning
+With Errors} (R-LWE) \citep{FPGA_Post_Quantum_Primitives}.
 
-\subsection{Asymmetric cryptography}
-\textit{Asymmetric encryption} is a type of encryption that utilizes these two
-keys, it encrypts using the private key and decrypts with the private one.
-A modern implementation of this is for example AES.
+\begin{definition}
 
+    The Diffie and Hellman algorithm works as follows. Let $g$ be a generator
+    element for the group $G$ of integers module $p$. Let Alice pick a random
+    natural number $a$ and sends $g^a$ to Bob. Bob then picks a random number
+    $b$ and sends $g^b$ to Alice. Alice then computes $g^{ab}$ and Bob computes
+    $g^{ba}$ \citep{FranciscoRodriguez-Henriquez10}.
 
-\subsection{Symmetric cryptography}
-\textit{Symmetric cryptography} is a little different than asymmetric
-cryptography, it only uses one key for both encryption and decryption. Today
-there are two different types of symmetric cryptography, stream and block
-ciphers. Stream ciphers work
+\end{definition}
 
+\subsection{Asymmetric algorithms}
+\textit{Asymmetric algorithms} are algorithms that use the public and private
+key, where the private key isn't possible to derive from the public one. The
+public key is known to everyone when sending a message,
