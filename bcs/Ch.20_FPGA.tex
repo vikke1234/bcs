@@ -1,94 +1,86 @@
 \chapter{FPGA\label{FPGA}}
 As briefly mentioned in the introduction, FPGAs consist of an array of logic
-gates. In this section we will give an overview on how such components work
-and different ways of configuring them. Modern FPGAs may also include a number
-of other components, for example processors and multipliers though we will not
-cover those.
+gates. In this section we will give an overview on how such components work and
+different ways of configuring them. Modern FPGAs may also include of other
+components, such as processors and multipliers which is out of the scope of
+the present thesis.
 
 \section{Lookup tables}
 
-In order to understand \textit{lookup tables} (LUT), a crucial component of
-FPGAs. We will first introduce some preliminary information on \textit{boolean
-functions}.
+\textit{Lookup tables} (LUT), are crucial component of FPGAs. We will first
+introduce some preliminary information on \textit{boolean functions}.
 
 \begin{definition}
-    A boolean function is a function that deals with two element sets, i.e.
+    A boolean function is a function that is defined on two element sets, i.e.
     $\{0,\ 1\}$, $\{\text{true},\ \text{false}\}$, ..., etc.
 
-    Without a loss of generality we can define a function $f$ to be a function
-    of form
+    Without loss of generality we can define a boolean function $f$ to be a
+    function of form
 
-    \[f \colon \{0,\ 1\}^N \rightarrow \{0,\ 1\}\]
+    \[f \colon \{0,\ 1\}^N \rightarrow \{0,\ 1\}, \quad \text{where $N$ is the
+    size of the input}\]
 
+    Any boolean function can be represented by \textit{truth table}. A truth
+    table represents all the possible outputs when a function $f$ is evaluated.
+    Consequently, the size of the truth table is $2^N$.
 \end{definition}
+
 
 \begin{example}
     \label{ex:boolean_function}
-    Any boolean function can be represented by \textit{truth table}. A truth
-    table represents all the possible outputs when a function $f$ is evaluated.
-    The size of the truth table is $2^N$ where $N$ is the number of inputs the
-    function has.
 
-    In boolean algebra addition and multiplication is a closed operation.
+    Hereon the addition $+$ and multiplication $\cdot$ is understood as the
+    usual boolean addition and multiplication.
 
     \[
     f \colon \{0,\ 1\}^3 \rightarrow \{0,\ 1\}, \quad (A, B, C) \mapsto A + B \cdot C
     \]
 
-    There are $2^3 = 8$ possible values to this function. In Table
-    \ref{tab:example_truth_table} we can see how the truth table would look
-    like. We'll look at how this could be represented using logic gates in
-    a later section.
+    There are $2^3 = 8$ possible values for the function $f$. Table
+    \ref{tab:example_truth_table} represents the truth table. We'll look at how
+    this could be represented using logic gates in a later section.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|l|l|l|}
+            \hline
+            A & B & C & Out \\ \hline
+            0 & 0 & 0 & 0   \\ \hline
+            0 & 0 & 1 & 1   \\ \hline
+            0 & 1 & 0 & 0   \\ \hline
+            0 & 1 & 1 & 1   \\ \hline
+            1 & 0 & 0 & 0   \\ \hline
+            1 & 0 & 1 & 1   \\ \hline
+            1 & 1 & 0 & 1   \\ \hline
+            1 & 1 & 1 & 1   \\ \hline
+        \end{tabular}
+        \caption{Truth table for function $f$}
+        \label{tab:example_truth_table}
+    \end{table}
 
-    \begin{figure}
-        \begin{subfigure}[b]{.4\textwidth}
-        \centering
-            \begin{tabular}{|l|l|l|l|}
-                \hline
-                A & B & C & Out \\ \hline
-                0 & 0 & 0 & 0   \\ \hline
-                0 & 0 & 1 & 1   \\ \hline
-                0 & 1 & 0 & 0   \\ \hline
-                0 & 1 & 1 & 1   \\ \hline
-                1 & 0 & 0 & 0   \\ \hline
-                1 & 0 & 1 & 1   \\ \hline
-                1 & 1 & 0 & 1   \\ \hline
-                1 & 1 & 1 & 1   \\ \hline
-            \end{tabular}
-            \caption{Truth table for function $f$}
-            \label{tab:example_truth_table}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{.4\textwidth}
-            \centering
-            \includegraphics[scale=0.4]{lut_structure.png}
-            \caption{An example of how a lookup table could be implemented}
-            \label{fig:lut_flipflop}
-        \end{subfigure}
-        \\
-        \centering
-        \begin{subfigure}[b]{.4\textwidth}
-            \centering
-            \includegraphics[scale=0.13]{flipflop_functionality.png}
-            \caption{How a flip-flop reads output}
-            \label{fig:flipflop_func}
-        \end{subfigure}
-    \end{figure}
+
+    In fact these truth tables are what allows the re-configuration of FPGAs, by
+    replacing the values in the truth tables we can make it evaluate a different
+    function.
 \end{example}
 
-These truth tables are what allows for FPGAs to be reconfigured, by replacing
-the values in the lookup tables we can make it evaluate another function. The
-way LUTs are implemented are using $N:1$ multiplexers and $N$-bits of memory,
-it stores all the answers of the LUT in memory. Then the multiplexer takes $N$
-inputs and maps it to the LUTs answer.
+\begin{definition}
 
-There has been studies done about how many LUTs a logic block should contain, if
-there were more LUTs it would allow for more complex logic. Though adding more
-inputs would also make the chip slower, the generally accepted number is 4
-\citep{HideharuAmano8}.
+    A \textit{lookup table} is a truth table that is represented in continuous
+    memory. LUTs are implemented are using $N:1$ \textit{multiplexers}. A
+    multiplexer is a component that simply maps multiple inputs into a single
+    output, the internals of it is out of the scope of this thesis. Using $N$-bits
+    of memory to store all the answers of the truth table in memory we can evaluate
+    any boolean function.
+
+    In 1990 there was a study on how many inputs a LUT should have. If
+    there were more inputs it would allow for more complex logic. Though adding more
+    inputs would also make the chip slower, the generally accepted number is
+    between three and four \citep{RoseArchitecture}.
+
+\end{definition}
 
 \subsection{Delay flip-flop}
-This alone is not enough to be able to implement everything as we cannot store
+LUTs alone are not enough to be able to be Turing complete as we cannot store
 state. What we need is some way to store information, this is where the
 \textit{delay(D) flip-flops} come in. A D flip-flop can store a single bit of
 data, this is incredibly useful as it can be used to store state. In Figure
@@ -100,6 +92,23 @@ clock sends a signal to the flip-flop to tell it to check the data value. We
 can an example of this in Figure \ref{fig:flipflop_func}. The output Q is only
 changed to high after the second cycle and waits a cycle to go to low after the
 third cycle.
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{.4\textwidth}
+        \centering
+        \includegraphics[scale=0.4]{lut_structure.png}
+        \caption{An example of how a lookup table could be implemented}
+        \label{fig:lut_flipflop}
+    \end{subfigure}
+    ~
+    \centering
+    \begin{subfigure}[b]{.4\textwidth}
+        \centering
+        \includegraphics[scale=0.13]{flipflop_functionality.png}
+        \caption{How a flip-flop reads output}
+        \label{fig:flipflop_func}
+    \end{subfigure}
+\end{figure}
 
 \subsection{Application specific integrated circuits}
 As briefly explained in the introduction, if we after all this needed even more
@@ -115,11 +124,11 @@ we send the result to the or gate and calculate $A + B \cdot C$. ASICs then use
 this to implement all boolean functions, since they do not need to be able
 to be reconfigured they can be made more efficient.
 
-When making ASICs manufacturers often first create FPGA versions of them. They
-first create an FPGA with LUTs for each gate and once they're tested thoroughly
+When making ASICs manufacturers often first create FPGA versions of them where
+they create an FPGA with LUTs for each gate. Once they're tested thoroughly
 they're made into ASICs.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{.4\textwidth}
         \centering
@@ -138,9 +147,9 @@ they're made into ASICs.
 
 \begin{figure}[H]
     \centering
-    \label{fig:fpga_structure}
     \includegraphics[scale=0.5]{fpga_structure.png}
     \caption{An example of an island-style FPGA\citep{M.MorrisMano3}}
+    \label{fig:fpga_structure}
 \end{figure}
 
 \section{Input/Output blocks}
@@ -151,7 +160,8 @@ circuits such as the clock and power usage.
 \section{Connection block}
 Along the wires by the logic blocks there are connection blocks (CB). These blocks
 control which data goes into and out of a logic block. They also connect the
-I/O blocks to the FPGA.
+I/O blocks to the FPGA. In Figure \ref{fig:fpga_structure} we can see an
+example of where these connection blocks could be placed.
 
 \section{Switch block}
 A switch block (switch box, SB) is a type of block that exists at every

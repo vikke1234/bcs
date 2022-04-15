@@ -12,45 +12,63 @@ faster. With quantum computers in development the current cryptographic schemes
 will be obsolete as, for example RSA can be broken in polynomial time.
 
 One of the earliest forms of cryptography was the Ceasar cipher, invented by
-Julius Ceasar in ancient Rome. The Ceasar cipher is a \textit{secret key
-cryptography} where users agree on a key that is used to encrypt and decrypt
-messages. The cipher is based around shifting letters by $N$ letters in the
-alphabet. The Romans only had to agree on how many letters they should shift. A
-modern example of a secret key encryption scheme is \textit{Data Encryption
-Algorithm} (DEA) which used 56 bit keys which is way too small and is being
-deprecated. The issue in today's world is exchanging keys in order to keep the
-decryption keys secret. As means for keeping single decryption keys secret have
-minimized \textit{public key cryptography} has become extremely useful
-\citep{FranciscoRodriguez-Henriquez10}.
+Julius Ceasar in ancient Rome. The Ceasar cipher is a \textit{symmetric
+cipher}. A symmetric cipher is a cipher where users agree on a key that is used
+to encrypt and decrypt messages. The cipher is based around shifting letters by
+$N$ letters in the alphabet. The Romans only had to agree on how many letters
+they should shift. A modern example of a secret key encryption scheme is the
+\textit{Advanced Encryption Standard} (AES). The issue in today's world is
+exchanging keys in order to keep the decryption keys secret. As means for
+keeping exchanging keys \textit{public key cryptography} has become an
+extremely powerful tool \citep{FranciscoRodriguez-Henriquez10}.
 
-There are two types of ciphers, stream- and block ciphers. A stream cipher is
-a type of cipher that encrypts a bit or in some scenarios a byte at a time.
-While block ciphers take a block of data and transform into an unreadable block
-of the same length.
+When we encrypt messages, there are two different types of ciphers we can use,
+stream- and block ciphers. A stream cipher is a type of cipher that encrypts a
+bit or in some scenarios a byte at a time. Block ciphers on the other hand take
+a block of data and transform into an unreadable block of the same length.
+
 
 \section{Public key cryptography}
-Cryptography was revolutionized in 1976 when the Diffie and Hellman key
-exchange was invented. It solved the issues of exchanging keys as well as
-providing the means to implement authentication. Public key cryptography is a
-type of cryptography that works by having two sets of keys, a public- and a
-private key that are used for encryption and decryption. When we encrypt
-something we assume some operation is hard for a computer to reverse. Due to
-the recent developments in quantum computing some of the problems we considered
-hard, such as integer factorization are no longer hard. There are new problems
-that are hard even for quantum computers, such as the \textit{Ring Learning
-With Errors} (R-LWE) \citep{FPGA_Post_Quantum_Primitives}.
+Cryptography was revolutionized in 1976 when the \textit{Diffie and Hellman key
+exchange} was invented. It solved the issues of exchanging keys as well as
+providing the means to implement authentication. \textit{Public key
+cryptography}, also know as \textit{asymmetric cryptography} is a type of
+cryptography that works by having two sets of keys, a public- and a private key
+that are used for encryption and decryption. As the name implies, the public
+key is known to everyone while the private key should not be shared.
 
 \begin{definition}
 
     The Diffie and Hellman algorithm works as follows. Let $g$ be a generator
-    element for the group $G$ of integers module $p$. Let Alice pick a random
+    element for the group $G$ of integers modulo $p$. Let Alice pick a random
     natural number $a$ and sends $g^a$ to Bob. Bob then picks a random number
     $b$ and sends $g^b$ to Alice. Alice then computes $g^{ab}$ and Bob computes
     $g^{ba}$ \citep{FranciscoRodriguez-Henriquez10}.
 
 \end{definition}
 
-\subsection{Asymmetric algorithms}
-\textit{Asymmetric algorithms} are algorithms that use the public and private
-key, where the private key isn't possible to derive from the public one. The
-public key is known to everyone when sending a message,
+When we encrypt something we assume some function is hard for a computer to
+reverse. Due to the recent developments in quantum computing some of the
+problems we considered hard, such as integer factorization as well as the
+Diffie and Hellman key exchange can be broken in polynomial time
+\citep{FPGA_Post_Quantum_Primitives}.
+This means we have to quickly move away from the methods we currently use.
+There are a few cryptographic functions that have gotten popular that are hard
+even for quantum computers. An example of a hard problem for quantum computers
+is a lattice based problem, \textit{Ring Learning With Errors} (R-LWE)
+\citep{FPGA_Post_Quantum_Primitives}.
+
+\subsection{Hash functions}
+\begin{definition}
+
+A \textit{hash function} H is a one-way function that takes an arbitrary length
+bit string B, a \textit{message}. Then it creates a unique bit string of fixed
+length, H(B) is a hash or digest of B \cite{FranciscoRodriguez-Henriquez10}.
+
+\end{definition}
+
+I.e. hash functions create a hash, a unique string of bytes from a given input.
+Hash functions are not perfect, although having a very small chance of two
+inputs having the same output it can happen. This is a terrible thing for hash
+functions as a malicious user could then fake for example a private key.
+
