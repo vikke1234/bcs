@@ -1,26 +1,16 @@
-% What is symmetric and assymetric cryptography
 \chapter{Cryptography\label{crypto}}
-Cryptography has always been important, it is been used since ancient times to
-secure communication. Cryptography can be used for a number of things like
-verifying data integrity i.e making sure that the data is not sent by an outside
-party etc. Especially in today's world where vast amounts of information is
-constantly transferred where tampering with information can have catastrophic
-consequences. Thankfully cryptography gives us the tools to safely distribute
-and receive information. In this chapter we will discuss different forms of
-cryptography . FPGAs can make for example hash functions among other things
-faster. With quantum computers in development the current cryptographic schemes
-will be obsolete as, for example RSA can be broken in polynomial time.
-
-One of the earliest forms of cryptography was the Ceasar cipher, invented by
-Julius Ceasar in ancient Rome. The Ceasar cipher is a \textit{symmetric
-cipher}. A symmetric cipher is a cipher where users agree on a key that is used
-to encrypt and decrypt messages. The cipher is based around shifting letters by
-$N$ letters in the alphabet. The Romans only had to agree on how many letters
-they should shift. A modern example of a secret key encryption scheme is the
-\textit{Advanced Encryption Standard} (AES). The issue in today's world is
-exchanging keys in order to keep the decryption keys secret. As means for
-keeping exchanging keys \textit{public key cryptography} has become an
-extremely powerful tool \citep{FranciscoRodriguez-Henriquez10}.
+In this chapter we will discuss different forms of cryptography and the
+mathematics behind it. Cryptography has always been important, it is been used
+since ancient times to secure communication. One of the earliest forms of
+cryptography was the Ceasar cipher, invented by Julius Ceasar in ancient Rome.
+The Ceasar cipher is a \textit{secret-key cipher}. A symmetric cipher is a
+cipher where users agree on a key that is used to encrypt and decrypt messages.
+The cipher is based around shifting letters by $N$ letters in the alphabet. The
+Romans only had to agree on how many letters they should shift. A modern
+example of a secret key encryption scheme is the \textit{Advanced Encryption
+Standard} (AES), though the way AES works is out of the scope of this thesis.
+Secret-key ciphers have a big issue though, since all parties need to have the
+same key we have no good way to exchange them.
 
 When we encrypt messages, there are two different types of ciphers we can use,
 stream- and block ciphers. A stream cipher is a type of cipher that encrypts a
@@ -29,34 +19,74 @@ a block of data and transform into an unreadable block of the same length.
 
 
 \section{Public key cryptography}
-Cryptography was revolutionized in 1976 when the \textit{Diffie and Hellman key
-exchange} was invented. It solved the issues of exchanging keys as well as
-providing the means to implement authentication. \textit{Public key
+Cryptography was revolutionized in the 70s when the \textit{Diffie and Hellman
+key exchange} and RSA was invented. It solved the issues of exchanging keys as
+well as providing the means to implement authentication. \textit{Public key
 cryptography}, also know as \textit{asymmetric cryptography} is a type of
-cryptography that works by having two sets of keys, a public- and a private key
+cryptography that works by having a public- and a private key
 that are used for encryption and decryption. As the name implies, the public
-key is known to everyone while the private key should not be shared.
+key is known to everyone while the private key should remain secret.
+
+When we encrypt something we assume some problem is hard for a computer to
+solve. One of the most common methods we currently use is the discrete
+logarithm problem.
+
+\begin{definition}
+    Let $g$ be a generator for the group $G$ and $\forall x \in \mathbb{N}$. The
+    discrete logarithm problem is that given $x = g^m$, find $m$.
+\end{definition}
+
+The Diffie and Hellman key exchange utilizes this problem to exchange keys.
 
 \begin{definition}
 
-    The Diffie and Hellman algorithm works as follows. Let $g$ be a generator
-    element for the group $G$ of integers modulo $p$. Let Alice pick a random
+    The Diffie and Hellman key exchange works as follows. Let $g$ be a generator
+    element for the group $G$ of integers modulo $p$. Alice picks a random
     natural number $a$ and sends $g^a$ to Bob. Bob then picks a random number
     $b$ and sends $g^b$ to Alice. Alice then computes $g^{ab}$ and Bob computes
-    $g^{ba}$ \citep{FranciscoRodriguez-Henriquez10}.
+    $g^{ba}$. Consequently Alice and Bob now share a secret key $g^{ab}$
+    \citep{FranciscoRodriguez-Henriquez10}.
 
 \end{definition}
 
-When we encrypt something we assume some function is hard for a computer to
-reverse. Due to the recent developments in quantum computing some of the
-problems we considered hard, such as integer factorization as well as the
-Diffie and Hellman key exchange can be broken in polynomial time
+Due to the recent developments in quantum computing some of the problems we
+considered hard, such as the finding the discrete logarithm, integer
+factorization as well as the elliptic curve problem can be broken in polynomial
+time \citep{ShorQuantum}. This means we have to quickly move away from the
+cryptographic methods we currently use. There are a few cryptographic functions
+that have gotten popular that are hard even for quantum computers. An example
+of a hard problem for quantum computers is a lattice based problem,
+\textit{Ring Learning With Errors} (R-LWE)
 \citep{FPGA_Post_Quantum_Primitives}.
-This means we have to quickly move away from the methods we currently use.
-There are a few cryptographic functions that have gotten popular that are hard
-even for quantum computers. An example of a hard problem for quantum computers
-is a lattice based problem, \textit{Ring Learning With Errors} (R-LWE)
-\citep{FPGA_Post_Quantum_Primitives}.
+
+\begin{definition}
+    A lattice is all of the combinations you can generate from a given vector.
+
+    \[L = \left\{ \sum_{i = 0}^n a_iv_i \, | \, a_i \in \bZ \right\}\]
+\end{definition}
+
+The R-LWE problem is based around the \textit{Learning With Errors} (LWE)
+problem. The LWE problem is considered hard to solve for quantum computers
+\citep{Regev05}.
+
+\begin{definition}
+    Learning with errors works as follows, Alice first picks a public vector
+    $a \in \bZ / q\bZ$, a secret vector $s \in \bZ / q\bZ$ and an error $\chi
+    \rightarrow e$. Let $\chi$ be a discrete Gaussian distribution.  Alice then
+    computes $b$.
+
+    \[ b = a \times s + e \]
+
+    We then send $a$ and $b$ to Bob. It will then be hard to calculate $s$.
+\end{definition}
+
+R-LWE encryption often uses the \textit{Shortest Vector Problem} (SVP) in a
+lattice.
+
+\begin{definition}
+    Let the ring $R_q = \bZ[x]/(x^n + 1)$ where $n$ is a power of 2 and
+    $q \equiv 1 (\mod 2n)$. \citep{FPGA_Post_Quantum_Primitives}
+\end{definition}
 
 \subsection{Hash functions}
 \begin{definition}
@@ -71,4 +101,5 @@ I.e. hash functions create a hash, a unique string of bytes from a given input.
 Hash functions are not perfect, although having a very small chance of two
 inputs having the same output it can happen. This is a terrible thing for hash
 functions as a malicious user could then fake for example a private key.
+
 
