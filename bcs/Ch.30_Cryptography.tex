@@ -2,8 +2,8 @@
 In this chapter we will discuss different forms of cryptography and the
 mathematics behind it. Cryptography has always been important, it is been used
 since ancient times to secure communication. One of the earliest forms of
-cryptography was the Ceasar cipher, invented by Julius Ceasar in ancient Rome.
-The Ceasar cipher is a \textit{secret-key cipher}. A symmetric cipher is a
+cryptography was the Caesar cipher, invented by Julius Caesar in ancient Rome.
+The Caesar cipher is a \textit{secret-key cipher}. A symmetric cipher is a
 cipher where users agree on a key that is used to encrypt and decrypt messages.
 The cipher is based around shifting letters by $N$ letters in the alphabet. The
 Romans only had to agree on how many letters they should shift. A modern
@@ -67,12 +67,12 @@ of a hard problem for quantum computers is a lattice based problem,
 \end{definition}
 
 \begin{definition}
-    Learning with errors works as follows, Alice first picks a public vector
-    $a \in \bZ / q\bZ$, a secret vector $s \in \bZ / q\bZ$ and an error $\chi
-    \rightarrow e$. Let $\chi$ be a discrete Gaussian distribution.  Alice then
-    computes $b$.
+    Learning with errors works as follows, let $\chi$ be a discrete Gaussian
+    distribution. Alice first picks a public vector $a \in (\bZ / q\bZ)^n$, a
+    secret vector $s \in (\bZ / q\bZ)^n$ and an error $\chi \rightarrow e$.
+    Alice then computes $b$.
 
-    \[ b = a \times s + e \]
+    \[ b = a \cdot s + e \]
 
     We then send $a$ and $b$ to Bob.
 \end{definition}
@@ -81,29 +81,53 @@ The R-LWE problem is based around the \textit{Learning With Errors} (LWE)
 problem. The LWE problem is considered hard to solve for quantum computers
 \citep{Regev05}. The issue that R-LWE tries to solve is speed. LWE is based
 around matrix multiplication which is $\mathcal{O}(n^2)$. R-LWE can use the
-\textit{Fast Fourier Transform} (FFT) to worst case to $\mathcal{O}(n\log n)$.
+\textit{Fast Fourier Transform} (FFT) to change the worst case time complexity
+to $\mathcal{O}(n\log n)$.
 
-\begin{definition}
+In \citep{FPGA_Post_Quantum_Primitives} we get the following definitions for
+key exchange, encryption and decryption.
 
-    R-LWE is built around polynomial arithmetic, an example of a polynomial is
-    the following.
+\begin{definition}[\textbf{Key exchange}]
+
+    R-LWE is built around polynomial arithmetic, the general definition of a
+    polynomial is the following.
 
     \[ g(x) = a_0 + a_1 \cdot x + \ldots + a_{n-1} \cdot x^{n-1} + a_n \cdot x^n \]
 
     Let the ring $R_q^n = \bZ[x]/(x^n + 1)$ where $x^n + 1$ is an irreducible
-    polynomial, $n$ is a power of 2 and $q \equiv 1\ (\text{mod } 2n)$ is a
-    large prime number \citep{FPGA_Post_Quantum_Primitives}.
+    polynomial, $n$ is a power of 2. Let $q \equiv 1\ (\text{mod } 2n)$ be a
+    large prime number and $\chi$ a Gaussian distribution
+    \citep{FPGA_Post_Quantum_Primitives}.
 
-    Let public vector $a \in R_q^n$, a secret vector $s \in R_q^n$ and an error
-    $\chi \rightarrow e$, where $\chi$ is a uniform distribution. Find $s$
-    given $a$ and $b$.
+    Let Alice pick a public vector $a \in R_q^n$, a secret vector $s \in R_q^n$
+    and an error $\chi \leftarrow e$. Using FFT to calculate quickly $b$, after
+    which $\{a,b\}$ is sent to Bob.
 
-    \[b = a \times s + e \]
+    \[b = a \cdot s + e \]
 
 \end{definition}
 
-\subsection{Encryption}
-TODO
+\begin{definition}[\textbf{Encryption}]
+    Let $t = \lfloor \frac{q}{2} \rfloor, \quad r_0,\ r_1,\ r_2
+    \leftarrow \chi$, Bob then converts the message $m$ to a bit string and
+    computes $\{c_0, c_1\}$.
+
+    \[
+        \begin{cases}
+            c_0 = b \cdot r_0 + r2 + tm\\
+            c_1 = a \cdot r_0 + r1
+        \end{cases}
+    \]
+
+\end{definition}
+
+\begin{definition}[\textbf{Decryption}]
+    Alice can decrypt the cipher by computing
+
+    \[m = \lceil (c_0 - c_1 \cdot s) / t) \rfloor \]
+
+    Where $\lceil \rfloor$ is rounding to the nearest integer.
+\end{definition}
 
 % Remove this section, not really relevant?
 \subsection{Hash functions}
