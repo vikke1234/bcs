@@ -1,73 +1,100 @@
 \chapter{Cryptography\label{crypto}}
 In this chapter we will discuss different forms of cryptography and the
-mathematics behind it. Cryptography has always been important, it is been used
-since ancient times to secure communication. One of the earliest forms of
-cryptography was the Caesar cipher, invented by Julius Caesar in ancient Rome.
-The Caesar cipher is a \textit{secret-key cipher}. A symmetric cipher is a
-cipher where users agree on a key that is used to encrypt and decrypt messages.
-The cipher is based around shifting letters by $N$ letters in the alphabet. The
-Romans only had to agree on how many letters they should shift. A modern
-example of a secret key encryption scheme is the \textit{Advanced Encryption
-Standard} (AES), though the way AES works is out of the scope of this thesis.
-Secret-key ciphers have a big issue though, since all parties need to have the
-same key we have no good way to exchange them.
-
-When we encrypt messages, there are two different types of ciphers we can use,
-stream- and block ciphers. A stream cipher is a type of cipher that encrypts a
-bit or in some scenarios a byte at a time. Block ciphers on the other hand take
-a block of data and transform into an unreadable block of the same length.
+mathematics behind it. Cryptography has been used since ancient times to secure
+communication. One of the earliest forms of cryptography is the Caesar cipher,
+invented by Julius Caesar in ancient Rome. The Caesar cipher is a
+\textit{secret-key cipher}\footnote{A symmetric cipher}. A symmetric cipher is
+a cipher where users agree on a key that is used to both encrypt and decrypt
+messages. The Caesar cipher is based on shifting letters by $N$ letters in the
+alphabet, where the encryption/decryption key is $N$. The Romans only had to
+agree on how many letters they should shift (the key). A modern example of a
+secret key encryption scheme is the \textit{Advanced Encryption Standard}
+(AES), though the way AES works is out of the scope of this thesis. Secret-key
+ciphers have a practical issue, since all parties need to use the same key, in
+this setting we have no obvious way to exchange keys. However, \textit{public
+key cryptography} was developed to solve the issue of key exchange.
 
 
 \section{Public key cryptography}
 Cryptography was revolutionized in the 70s when the \textit{Diffie and Hellman
-key exchange} and RSA was invented. It solved the issues of exchanging keys as
-well as providing the means to implement authentication. \textit{Public key
-cryptography}, also know as \textit{asymmetric cryptography} is a type of
-cryptography that works by having a public- and a private key
-that are used for encryption and decryption. As the name implies, the public
-key is known to everyone while the private key should remain secret.
+key exchange} and RSA were invented. It solved the issues of exchanging keys.
+Public key cryptography, also know as \textit{asymmetric cryptography}
+is a type of cryptography that works requiring two keys (in contrast with
+symmetric cryptography), a public- and a private key that are used for
+encryption and decryption. As the name implies, the public key is known to
+everyone while the private key should remain secret. We illustrate this by the
+following generic example of public key encryption.
 
-When we encrypt something we assume some problem is hard for a computer to
-solve. One of the most common methods we currently use is the discrete
-logarithm problem.
+\begin{example}
+    Assume first that Alice generated a pair of public and secret keys denoted
+    by pk and sk respectively. Alice then publishes the public key. Suppose that
+    Bob wants to send an encrypted message to Alice, Bob will use Alice's
+    public key pk to encrypt with her secret key and sends it Alice. Finally
+    Alice will use sk to decrypt the received message.
+\end{example}
 
-\begin{definition}
-    Let $g$ be a generator for the group $G$ and $\forall x \in \mathbb{N}$. The
-    discrete logarithm problem is that given $x = g^m$, find $m$.
+Usually asymmetric encryptions are built of some hard mathematical problems.
+By proving that the only way to "break" the encryption is to solve some
+precise mathematical problem that is proved to be computationally hard.
+Examples of such problems include the discrete logarithm problem and the
+integer factorization problem.
+
+\begin{definition}[\textbf{Discrete logarithm problem}]
+
+    Let $g$ be a generator for the group $G$ and $\forall x \in \mathbb{N}$,
+    given $x = g^m$, find $m$.
+
 \end{definition}
 
-The Diffie and Hellman key exchange utilizes this problem to exchange keys.
+\begin{definition}[\textbf{Integer factorization problem}]
 
-\begin{definition}
-
-    The Diffie and Hellman key exchange works as follows. Let $g$ be a generator
-    element for the group $G$ of integers modulo $p$. Alice picks a random
-    natural number $a$ and sends $g^a$ to Bob. Bob then picks a random number
-    $b$ and sends $g^b$ to Alice. Alice then computes $g^{ab}$ and Bob computes
-    $g^{ba}$. Consequently Alice and Bob now share a secret key $g^{ab}$
-    \citep{FranciscoRodriguez-Henriquez10}.
+    Given a product of two prime numbers $n$, factorize $n$ into the two prime
+    numbers $p$ and $q$.
 
 \end{definition}
 
-Due to the recent developments in quantum computing some of the problems we
-considered hard, such as the finding the discrete logarithm, integer
-factorization as well as the elliptic curve problem can be broken in polynomial
-time \citep{ShorQuantum}. This means we have to quickly move away from the
-cryptographic methods we currently use. There are a few cryptographic functions
-that have gotten popular that are hard even for quantum computers. An example
-of a hard problem for quantum computers is a lattice based problem,
-\textit{Ring Learning With Errors} (R-LWE)
-\citep{FPGA_Post_Quantum_Primitives}.
+Unfortunately, such problems were proven to be possible to break with a
+sufficiently large quantum computer in polynomial time \citep{ShorQuantum}. In
+the next section we will discuss some examples of post-quantum resistant
+cryptography.
+
+
+\section{Post-quantum cryptography}
+
+Due to the recent developments in quantum computing some of the problems
+considered hard, the discrete logarithm and integer factorization problem can
+be broken easily. Hence the interest in developing mathematical problems that
+are believed to be hard even for quantum computers. Examples of such problems
+arise from coding theory, systems of multi variable polynomials and lattice
+theory. In this thesis we will mainly focus on lattice based cryptography.
+
+
+\subsection{Lattice based cryptography}
 
 \begin{definition}
     A lattice in $\mathbb{R}^n$ is all of the combinations you can generate
-    from a given vector.
+    from a given basis of independent vectors $B = \{v_1,\ \ldots,\ v_n\}$.
 
     \[L = \left\{ \sum_{i = 0}^n a_iv_i \, | \, a_i \in \bZ \right\}\]
 \end{definition}
 
-\begin{definition}
-    Learning with errors works as follows, let $\chi$ be a discrete Gaussian
+
+We can define the shortest vector in the lattice $L$ to be
+$\lambda(L) = \min || y ||, \quad \forall y \in L$ where
+$||x|| = \{\sqrt{\sum_{i=0}^n x^2_i}\}, \quad x = (x_1, \ldots, x_n)$.
+
+There exist a few problems using lattices that are believed to be NP-hard for
+quantum computers. One of these is the shortest vector problem: let $\gamma \in
+\mathbb{R}_+$, find $x \in L$
+such that $||x|| \leq \gamma \lambda(L)$
+
+In 2005 Regev showed that \textit{Learning With Errors} (LWE) is a hard
+problem, by solving LWE we could solve the shortest vector problem in lattices
+\citep{Regev05}.
+
+
+\begin{definition}[\textbf{Learning With Errors}]
+    Let $\chi$ be a discrete Gaussian
     distribution. Alice first picks a public vector $a \in (\bZ / q\bZ)^n$, a
     secret vector $s \in (\bZ / q\bZ)^n$ and an error $\chi \rightarrow e$.
     Alice then computes $b$.
@@ -77,18 +104,16 @@ of a hard problem for quantum computers is a lattice based problem,
     We then send $a$ and $b$ to Bob.
 \end{definition}
 
-The R-LWE problem is based around the \textit{Learning With Errors} (LWE)
-problem. The LWE problem is considered hard to solve for quantum computers
-\citep{Regev05}. The issue that R-LWE tries to solve is speed. LWE is based
-around matrix multiplication which is $\mathcal{O}(n^2)$. R-LWE can use the
-\textit{Fast Fourier Transform} (FFT) to change the worst case time complexity
-to $\mathcal{O}(n\log n)$.
+LWE is a slow problem  slow for a computer to compute, this is where
+\textit{Ring Learning With Errors} (R-LWE) comes in. By doing multiplication
+over the ring $\bZ^n_q$ where the ring $R_q = \bZ[x] / (x^n + 1)$, we can we can
+reduce the complexity from $\mathcal{O}(n^2)$ to $\mathcal{O}(n\log n)$.
 
-In \citep{FPGA_Post_Quantum_Primitives} we get the following definitions for
-key exchange, encryption and decryption.
+In \citep{FPGA_Post_Quantum_Primitives} we get the following definitions for key
+generation, encryption and decryption.
 
 \begin{definition}[\textbf{Key exchange}]
-
+    % TODO Remove R-LWE definitions
     R-LWE is built around polynomial arithmetic, the general definition of a
     polynomial is the following.
 
@@ -128,20 +153,4 @@ key exchange, encryption and decryption.
 
     Where $\lceil \rfloor$ is rounding to the nearest integer.
 \end{definition}
-
-% Remove this section, not really relevant?
-\subsection{Hash functions}
-\begin{definition}
-
-A \textit{hash function} H is a one-way function that takes an arbitrary length
-bit string B, a \textit{message}. Then it creates a unique bit string of fixed
-length, H(B) is a hash or digest of B \cite{FranciscoRodriguez-Henriquez10}.
-
-\end{definition}
-
-I.e. hash functions create a hash, a unique string of bytes from a given input.
-Hash functions are not perfect, although having a very small chance of two
-inputs having the same output it can happen. This is a terrible thing for hash
-functions as a malicious user could then fake for example a private key.
-
 
