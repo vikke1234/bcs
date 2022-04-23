@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512mm"
+   height="160mm"
+   viewBox="0 0 512 160"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
+   sodipodi:docname="high_level_impl.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="mm"
+     width="321mm"
+     inkscape:zoom="1.1224747"
+     inkscape:cx="1482.4387"
+     inkscape:cy="372.39145"
+     inkscape:window-width="1920"
+     inkscape:window-height="1007"
+     inkscape:window-x="0"
+     inkscape:window-y="36"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     height="199mm" />
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient199285"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#0000f6;stop-opacity:1;"
+         offset="0"
+         id="stop199283" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient199145"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop199143" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient197177"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop197175" />
+    </linearGradient>
+    <rect
+       x="1495.9928"
+       y="256.09271"
+       width="108.00459"
+       height="52.101761"
+       id="rect179453" />
+    <rect
+       x="1337.1787"
+       y="150.58745"
+       width="79.936623"
+       height="54.296658"
+       id="rect173941" />
+    <rect
+       x="788.37683"
+       y="195.92856"
+       width="77.762772"
+       height="76.224022"
+       id="rect147945" />
+    <rect
+       x="45.374039"
+       y="173.04662"
+       width="115.45205"
+       height="32.889988"
+       id="rect86127" />
+    <rect
+       x="585.46484"
+       y="214.28302"
+       width="108.04592"
+       height="51.846142"
+       id="rect80702" />
+    <rect
+       x="443.77716"
+       y="219.87447"
+       width="105.51305"
+       height="47.995754"
+       id="rect78234" />
+    <rect
+       x="437.37662"
+       y="230.6698"
+       width="74.370171"
+       height="39.173923"
+       id="rect75346" />
+    <rect
+       x="454.38632"
+       y="221.62976"
+       width="109.55239"
+       height="40.32402"
+       id="rect72778" />
+    <rect
+       x="287.24707"
+       y="222.35204"
+       width="132.24626"
+       height="50.412041"
+       id="rect66344" />
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path61567" />
+    </marker>
+    <rect
+       x="588.51562"
+       y="377.76929"
+       width="105.06625"
+       height="48.201458"
+       id="rect56145" />
+    <rect
+       x="619.35541"
+       y="393.11526"
+       width="110.69286"
+       height="50.258266"
+       id="rect46471" />
+    <rect
+       x="114.48398"
+       y="420.1709"
+       width="131.52605"
+       height="50.639057"
+       id="rect29215" />
+    <rect
+       x="948.87415"
+       y="194.55667"
+       width="154.84888"
+       height="27.933578"
+       id="rect14101" />
+    <rect
+       x="580.02063"
+       y="193.99197"
+       width="122.96982"
+       height="27.267097"
+       id="rect11873" />
+    <rect
+       x="132.33046"
+       y="198.69525"
+       width="110.72758"
+       height="26.304487"
+       id="rect8787" />
+    <rect
+       x="344.18484"
+       y="45.307049"
+       width="186.38071"
+       height="28.830095"
+       id="rect4315" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text4313"
+       style="font-size:20px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect4315)"><tspan
+         x="344.18555"
+         y="63.504144"
+         id="tspan202423">Application system</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-3.5399512,-18.159503)"
+       id="text8785"
+       style="font-size:20px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect8787)"><tspan
+         x="132.33008"
+         y="216.89282"
+         id="tspan202425">Encryption</tspan></text>
+    <rect
+       style="fill:none;stroke-width:0.765"
+       id="rect24876"
+       width="1.0556213"
+       height="2.3257651"
+       x="308.02936"
+       y="47.367336" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text29213"
+       style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect29215)"><tspan
+         x="114.48438"
+         y="434.72988"
+         id="tspan202427">Scalar </tspan><tspan
+         x="114.48438"
+         y="454.72988"
+         id="tspan202429">multiplication</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="32.661167"
+       y="86.391838"
+       id="text39435"><tspan
+         sodipodi:role="line"
+         id="tspan39433"
+         style="font-size:4.23333px;stroke-width:0.264583"
+         x="32.661167"
+         y="86.391838">Noise sampler</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:46.1383;stroke-width:0.264583"
+       x="107.55414"
+       y="106.45688"
+       id="text40561"
+       transform="translate(-30.745133,-3.9138585)"><tspan
+         x="107.55414"
+         y="106.45688"
+         id="tspan202431">Polynomial </tspan><tspan
+         x="107.55414"
+         y="111.74855"
+         id="tspan202433">multiplication
+</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-48.918339,-5.0112592)"
+       id="text46469"
+       style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46471)"><tspan
+         x="619.35547"
+         y="407.67324"
+         id="tspan202435">Polynomial </tspan><tspan
+         x="619.35547"
+         y="427.67324"
+         id="tspan202437">Reduction</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-6.77657,-18.672861)"
+       id="text56143"
+       style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect56145)"><tspan
+         x="588.51562"
+         y="392.32753"
+         id="tspan202439">Polynomial </tspan><tspan
+         x="588.51562"
+         y="412.32753"
+         id="tspan202441">addition</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="M 9.4641716,26.587309 V 118.45871 H 25.353428"
+       id="path61562" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.233209px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 47.260322,91.520204 v 9.492116 h 25.003016"
+       id="path61834" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 104.94553,103.77749 h 7.77617"
+       id="path61836" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.270689px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="M 61.498106,85.555465 H 147.16449"
+       id="path61953" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-7.1719999,-0.81885681)"
+       id="text66342"
+       style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect66344)"><tspan
+         x="287.24609"
+         y="236.90957"
+         id="tspan202443">Polynomial </tspan><tspan
+         x="287.24609"
+         y="256.90957"
+         id="tspan202445">Multiplication</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text72776"
+       style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect72778)" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text75344"
+       style="font-size:20px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect75346)" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-15.159835,-0.04533299)"
+       id="text78232"
+       style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect78234)"><tspan
+         x="443.77734"
+         y="234.433"
+         id="tspan202447">Polynomial </tspan><tspan
+         x="443.77734"
+         y="254.433"
+         id="tspan202449">Reduction</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-20.159916,2.0188862)"
+       id="text80700"
+       style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect80702)"><tspan
+         x="585.46484"
+         y="228.84121"
+         id="tspan202451">Polynomial </tspan><tspan
+         x="585.46484"
+         y="248.84121"
+         id="tspan202453">Addition</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.244807px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="M 46.957346,80.555547 V 65.238883 H 64.83264"
+       id="path84055" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text86125"
+       style="font-size:20px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect86127)"><tspan
+         x="45.375"
+         y="191.24438"
+         id="tspan202457"><tspan
+           style="font-size:10.6667px"
+           id="tspan202455">Message to encrypt</tspan></tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 15.78138,112.00615 h 9.065817"
+       id="path95528" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 95.611951,62.232973 h 5.165979"
+       id="path95532" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 125.57667,63.464164 h 7.24545"
+       id="path95534" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.82222px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="13.5054"
+       y="122.48935"
+       id="text97342"><tspan
+         sodipodi:role="line"
+         id="tspan97340"
+         style="font-size:2.82222px;stroke-width:0.264583"
+         x="13.5054"
+         y="122.48935">m</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82222px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="18.136259"
+       y="106.40546"
+       id="text102342"><tspan
+         sodipodi:role="line"
+         id="tspan102340"
+         style="font-size:2.82222px;stroke-width:0.264583"
+         x="18.136259"
+         y="106.40546">q/2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82222px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="52.08913"
+       y="93.974052"
+       id="text107155"><tspan
+         sodipodi:role="line"
+         id="tspan107153"
+         style="font-size:2.82222px;stroke-width:0.264583"
+         x="52.08913"
+         y="93.974052">r0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82222px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="64.911697"
+       y="81.766441"
+       id="text110841"><tspan
+         sodipodi:role="line"
+         id="tspan110839"
+         style="font-size:2.82222px;stroke-width:0.264583"
+         x="64.911697"
+         y="81.766441">r1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82222px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="50.038433"
+       y="76.742912"
+       id="text113893"><tspan
+         sodipodi:role="line"
+         id="tspan113891"
+         style="font-size:2.82222px;stroke-width:0.264583"
+         x="50.038433"
+         y="76.742912">r2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82222px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="180.0937"
+       y="78.916763"
+       id="text117719"><tspan
+         sodipodi:role="line"
+         id="tspan117717"
+         style="font-size:2.82222px;stroke-width:0.264583"
+         x="180.0937"
+         y="78.916763">c0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.82222px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="165.18604"
+       y="55.153698"
+       id="text121485"><tspan
+         sodipodi:role="line"
+         id="tspan121483"
+         style="font-size:2.82222px;stroke-width:0.264583"
+         x="165.18604"
+         y="55.153698">c1</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 139.22042,103.42153 h 16.2544 v -8.678129"
+       id="path125633" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="M 62.707228,117.80008 H 167.00905 V 96.197064"
+       id="path125828" />
+    <text
+       xml:space="preserve"
+       style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="57.850029"
+       y="107.69347"
+       id="text127761"><tspan
+         sodipodi:role="line"
+         id="tspan127759"
+         style="stroke-width:0.264583"
+         x="57.850029"
+         y="107.69347">add B</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="53.914238"
+       y="59.139416"
+       id="text129079"><tspan
+         sodipodi:role="line"
+         id="tspan129077"
+         style="stroke-width:0.264583"
+         x="53.914238"
+         y="59.139416">Add A</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="209.34706"
+       y="40.386349"
+       id="text140555"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="209.34706"
+         y="40.386349"
+         id="tspan140557">Decryption</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text147943"
+       style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect147945)"><tspan
+         x="788.37695"
+         y="210.48574"
+         id="tspan202459">Nearest </tspan><tspan
+         x="788.37695"
+         y="230.48574"
+         id="tspan202461">binary </tspan><tspan
+         x="788.37695"
+         y="250.48574"
+         id="tspan202463">integer</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:23.5235;stroke-width:0.264583"
+       x="250.35408"
+       y="68.560394"
+       id="text150987"
+       transform="translate(-8.6494943,-9.8168368)"><tspan
+         x="250.35408"
+         y="68.560394"
+         id="tspan202465">Polynomial </tspan><tspan
+         x="250.35408"
+         y="73.852061"
+         id="tspan202467">Subtraction</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:25.2339;stroke-width:0.264583"
+       x="290.72482"
+       y="81.124573"
+       id="text157063"
+       transform="translate(-20.862807,-4.4078385)"><tspan
+         x="290.72482"
+         y="81.124573"
+         id="tspan202469">Modulo </tspan><tspan
+         x="290.72482"
+         y="86.41624"
+         id="tspan202471">Reduction</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:27.826;stroke-width:0.264583"
+       x="327.37476"
+       y="80.627281"
+       id="text161649"
+       transform="translate(-24.315085,-3.7716013)"><tspan
+         x="327.37476"
+         y="80.627281"
+         id="tspan202473">Polynomial </tspan><tspan
+         x="327.37476"
+         y="85.918948"
+         id="tspan202475">Multiplication</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,0.02483891,10.597101)"
+       id="text173939"
+       style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect173941)"><tspan
+         x="1337.1797"
+         y="165.14589"
+         id="tspan202477">Noise </tspan><tspan
+         x="1337.1797"
+         y="185.14589"
+         id="tspan202479">sampler</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:27.6414;stroke-width:0.264583"
+       x="353.57571"
+       y="72.924019"
+       id="text175189"
+       transform="translate(-1.3453727,6.8331822)"><tspan
+         x="353.57571"
+         y="72.924019"
+         id="tspan202481">True Random </tspan><tspan
+         x="353.57571"
+         y="78.215686"
+         id="tspan202483">Number </tspan><tspan
+         x="353.57571"
+         y="83.50735"
+         id="tspan202485">Generator</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-1.162674,10.827442)"
+       id="text179451"
+       style="font-size:20px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect179453)"><tspan
+         x="1495.9922"
+         y="274.2893"
+         id="tspan202489"><tspan
+           style="font-size:16px"
+           id="tspan202487">Polynomial </tspan></tspan><tspan
+         x="1495.9922"
+         y="299.2893"
+         id="tspan202493"><tspan
+           style="font-size:16px"
+           id="tspan202491">Multiplication</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
+       x="351.819"
+       y="39.787617"
+       id="text186443"><tspan
+         sodipodi:role="line"
+         id="tspan186441"
+         style="stroke-width:0.264583"
+         x="351.819"
+         y="39.787617">Key Generation</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:19.9383;stroke-width:0.264583"
+       x="435.02466"
+       y="67.334114"
+       id="text187689"
+       transform="translate(1.7464207,15.771018)"><tspan
+         x="435.02466"
+         y="67.334114"
+         id="tspan202495">Modulo </tspan><tspan
+         x="435.02466"
+         y="72.625773"
+         id="tspan202497">reduction</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:24.5511;stroke-width:0.264583"
+       x="468.15298"
+       y="56.184731"
+       id="text192731"
+       transform="translate(-2.9016998,-1.4832419)"><tspan
+         x="468.15298"
+         y="56.184731"
+         id="tspan202499">Polynomial </tspan><tspan
+         x="468.15298"
+         y="61.47639"
+         id="tspan202501">addition</tspan></text>
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#d0899c;stroke-width:0.765;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect200705"
+       width="181.69424"
+       height="91.684677"
+       x="4.9225602"
+       y="33.194637"
+       ry="0" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#54899c;stroke-width:0.765;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect201491"
+       width="141.1037"
+       height="92.20742"
+       x="198.57387"
+       y="32.90807" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#937294;stroke-width:0.765;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect201639"
+       width="147.18463"
+       height="65.658417"
+       x="346.88809"
+       y="32.947468" />
+  </g>
+</svg>
