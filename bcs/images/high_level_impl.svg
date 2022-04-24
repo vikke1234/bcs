@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="512mm"
+   width="534mm"
    height="160mm"
-   viewBox="0 0 512 160"
+   viewBox="0 0 534 160"
    version="1.1"
    id="svg5"
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
@@ -26,8 +26,8 @@
      units="mm"
      width="321mm"
      inkscape:zoom="1.1224747"
-     inkscape:cx="1482.4387"
-     inkscape:cy="372.39145"
+     inkscape:cx="1316.7334"
+     inkscape:cy="256.57593"
      inkscape:window-width="1920"
      inkscape:window-height="1007"
      inkscape:window-x="0"
@@ -37,6 +37,12 @@
      height="199mm" />
   <defs
      id="defs2">
+    <rect
+       x="1917.8633"
+       y="223.03716"
+       width="55.221502"
+       height="268.46606"
+       id="rect228355" />
     <linearGradient
        id="linearGradient199285"
        inkscape:swatch="solid">
@@ -178,12 +184,12 @@
      id="layer1">
     <text
        xml:space="preserve"
-       transform="scale(0.26458333)"
+       transform="matrix(0.26458333,0,0,0.26458333,131.95272,-4.0062185)"
        id="text4313"
        style="font-size:20px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect4315)"><tspan
          x="344.18555"
          y="63.504144"
-         id="tspan202423">Application system</tspan></text>
+         id="tspan239972">Application system</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-3.5399512,-18.159503)"
@@ -191,7 +197,7 @@
        style="font-size:20px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect8787)"><tspan
          x="132.33008"
          y="216.89282"
-         id="tspan202425">Encryption</tspan></text>
+         id="tspan239974">Encryption</tspan></text>
     <rect
        style="fill:none;stroke-width:0.765"
        id="rect24876"
@@ -206,10 +212,10 @@
        style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect29215)"><tspan
          x="114.48438"
          y="434.72988"
-         id="tspan202427">Scalar </tspan><tspan
+         id="tspan239976">Scalar </tspan><tspan
          x="114.48438"
          y="454.72988"
-         id="tspan202429">multiplication</tspan></text>
+         id="tspan239978">multiplication</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
@@ -230,10 +236,10 @@
        transform="translate(-30.745133,-3.9138585)"><tspan
          x="107.55414"
          y="106.45688"
-         id="tspan202431">Polynomial </tspan><tspan
+         id="tspan239980">Polynomial </tspan><tspan
          x="107.55414"
          y="111.74855"
-         id="tspan202433">multiplication
+         id="tspan239982">multiplication
 </tspan></text>
     <text
        xml:space="preserve"
@@ -242,21 +248,21 @@
        style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46471)"><tspan
          x="619.35547"
          y="407.67324"
-         id="tspan202435">Polynomial </tspan><tspan
+         id="tspan239984">Modulo </tspan><tspan
          x="619.35547"
          y="427.67324"
-         id="tspan202437">Reduction</tspan></text>
+         id="tspan239986">Reduction</tspan></text>
     <text
        xml:space="preserve"
-       transform="matrix(0.26458333,0,0,0.26458333,-6.77657,-18.672861)"
+       transform="matrix(0.26458333,0,0,0.26458333,-3.0690766,-19.498005)"
        id="text56143"
        style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect56145)"><tspan
          x="588.51562"
          y="392.32753"
-         id="tspan202439">Polynomial </tspan><tspan
+         id="tspan239988">Polynomial </tspan><tspan
          x="588.51562"
          y="412.32753"
-         id="tspan202441">addition</tspan></text>
+         id="tspan239990">addition</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        d="M 9.4641716,26.587309 V 118.45871 H 25.353428"
@@ -270,20 +276,20 @@
        d="m 104.94553,103.77749 h 7.77617"
        id="path61836" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.270689px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="M 61.498106,85.555465 H 147.16449"
+       style="fill:none;stroke:#000000;stroke-width:0.264911px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="M 65.116461,85.555465 H 147.16449"
        id="path61953" />
     <text
        xml:space="preserve"
-       transform="matrix(0.26458333,0,0,0.26458333,-7.1719999,-0.81885681)"
+       transform="matrix(0.26458333,0,0,0.26458333,-10.445542,-2.0798793)"
        id="text66342"
        style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect66344)"><tspan
          x="287.24609"
          y="236.90957"
-         id="tspan202443">Polynomial </tspan><tspan
+         id="tspan239992">Polynomial </tspan><tspan
          x="287.24609"
          y="256.90957"
-         id="tspan202445">Multiplication</tspan></text>
+         id="tspan239994">Multiplication</tspan></text>
     <text
        xml:space="preserve"
        transform="scale(0.26458333)"
@@ -296,30 +302,26 @@
        style="font-size:20px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect75346)" />
     <text
        xml:space="preserve"
-       transform="matrix(0.26458333,0,0,0.26458333,-15.159835,-0.04533299)"
+       transform="matrix(0.26458333,0,0,0.26458333,-13.389403,-1.5173532)"
        id="text78232"
        style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect78234)"><tspan
          x="443.77734"
          y="234.433"
-         id="tspan202447">Polynomial </tspan><tspan
+         id="tspan239996">Modulo </tspan><tspan
          x="443.77734"
          y="254.433"
-         id="tspan202449">Reduction</tspan></text>
+         id="tspan239998">Reduction</tspan></text>
     <text
        xml:space="preserve"
-       transform="matrix(0.26458333,0,0,0.26458333,-20.159916,2.0188862)"
+       transform="matrix(0.26458333,0,0,0.26458333,-17.698281,5.0538732)"
        id="text80700"
        style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect80702)"><tspan
          x="585.46484"
          y="228.84121"
-         id="tspan202451">Polynomial </tspan><tspan
+         id="tspan240000">Polynomial </tspan><tspan
          x="585.46484"
          y="248.84121"
-         id="tspan202453">Addition</tspan></text>
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.244807px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="M 46.957346,80.555547 V 65.238883 H 64.83264"
-       id="path84055" />
+         id="tspan240002">Addition</tspan></text>
     <text
        xml:space="preserve"
        transform="scale(0.26458333)"
@@ -327,17 +329,13 @@
        style="font-size:20px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect86127)"><tspan
          x="45.375"
          y="191.24438"
-         id="tspan202457"><tspan
+         id="tspan240006"><tspan
            style="font-size:10.6667px"
-           id="tspan202455">Message to encrypt</tspan></tspan></text>
+           id="tspan240004">Message to encrypt</tspan></tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        d="m 15.78138,112.00615 h 9.065817"
        id="path95528" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="m 95.611951,62.232973 h 5.165979"
-       id="path95532" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        d="m 125.57667,63.464164 h 7.24545"
@@ -441,14 +439,14 @@
     <text
        xml:space="preserve"
        style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       x="53.914238"
-       y="59.139416"
+       x="46.845772"
+       y="58.46629"
        id="text129079"><tspan
          sodipodi:role="line"
          id="tspan129077"
          style="stroke-width:0.264583"
-         x="53.914238"
-         y="59.139416">Add A</tspan></text>
+         x="46.845772"
+         y="58.46629">Add A</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
@@ -467,13 +465,13 @@
        style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect147945)"><tspan
          x="788.37695"
          y="210.48574"
-         id="tspan202459">Nearest </tspan><tspan
+         id="tspan240008">Nearest </tspan><tspan
          x="788.37695"
          y="230.48574"
-         id="tspan202461">binary </tspan><tspan
+         id="tspan240010">binary </tspan><tspan
          x="788.37695"
          y="250.48574"
-         id="tspan202463">integer</tspan></text>
+         id="tspan240012">integer</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:23.5235;stroke-width:0.264583"
@@ -483,10 +481,10 @@
        transform="translate(-8.6494943,-9.8168368)"><tspan
          x="250.35408"
          y="68.560394"
-         id="tspan202465">Polynomial </tspan><tspan
+         id="tspan240014">Polynomial </tspan><tspan
          x="250.35408"
          y="73.852061"
-         id="tspan202467">Subtraction</tspan></text>
+         id="tspan240016">Subtraction</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:25.2339;stroke-width:0.264583"
@@ -496,10 +494,10 @@
        transform="translate(-20.862807,-4.4078385)"><tspan
          x="290.72482"
          y="81.124573"
-         id="tspan202469">Modulo </tspan><tspan
+         id="tspan240018">Modulo </tspan><tspan
          x="290.72482"
          y="86.41624"
-         id="tspan202471">Reduction</tspan></text>
+         id="tspan240020">Reduction</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:27.826;stroke-width:0.264583"
@@ -509,10 +507,10 @@
        transform="translate(-24.315085,-3.7716013)"><tspan
          x="327.37476"
          y="80.627281"
-         id="tspan202473">Polynomial </tspan><tspan
+         id="tspan240022">Polynomial </tspan><tspan
          x="327.37476"
          y="85.918948"
-         id="tspan202475">Multiplication</tspan></text>
+         id="tspan240024">Multiplication</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,0.02483891,10.597101)"
@@ -520,10 +518,10 @@
        style="font-size:16px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect173941)"><tspan
          x="1337.1797"
          y="165.14589"
-         id="tspan202477">Noise </tspan><tspan
+         id="tspan240026">Noise </tspan><tspan
          x="1337.1797"
          y="185.14589"
-         id="tspan202479">sampler</tspan></text>
+         id="tspan240028">sampler</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:27.6414;stroke-width:0.264583"
@@ -533,13 +531,13 @@
        transform="translate(-1.3453727,6.8331822)"><tspan
          x="353.57571"
          y="72.924019"
-         id="tspan202481">True Random </tspan><tspan
+         id="tspan240030">True Random </tspan><tspan
          x="353.57571"
          y="78.215686"
-         id="tspan202483">Number </tspan><tspan
+         id="tspan240032">Number </tspan><tspan
          x="353.57571"
          y="83.50735"
-         id="tspan202485">Generator</tspan></text>
+         id="tspan240034">Generator</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-1.162674,10.827442)"
@@ -547,14 +545,14 @@
        style="font-size:20px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect179453)"><tspan
          x="1495.9922"
          y="274.2893"
-         id="tspan202489"><tspan
+         id="tspan240038"><tspan
            style="font-size:16px"
-           id="tspan202487">Polynomial </tspan></tspan><tspan
+           id="tspan240036">Polynomial </tspan></tspan><tspan
          x="1495.9922"
          y="299.2893"
-         id="tspan202493"><tspan
+         id="tspan240042"><tspan
            style="font-size:16px"
-           id="tspan202491">Multiplication</tspan></tspan></text>
+           id="tspan240040">Multiplication</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.29167px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
@@ -575,10 +573,10 @@
        transform="translate(1.7464207,15.771018)"><tspan
          x="435.02466"
          y="67.334114"
-         id="tspan202495">Modulo </tspan><tspan
+         id="tspan240044">Modulo </tspan><tspan
          x="435.02466"
          y="72.625773"
-         id="tspan202497">reduction</tspan></text>
+         id="tspan240046">reduction</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;white-space:pre;inline-size:24.5511;stroke-width:0.264583"
@@ -588,10 +586,10 @@
        transform="translate(-2.9016998,-1.4832419)"><tspan
          x="468.15298"
          y="56.184731"
-         id="tspan202499">Polynomial </tspan><tspan
+         id="tspan240048">Polynomial </tspan><tspan
          x="468.15298"
          y="61.47639"
-         id="tspan202501">addition</tspan></text>
+         id="tspan240050">addition</tspan></text>
     <rect
        style="fill:none;fill-opacity:1;stroke:#d0899c;stroke-width:0.765;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect200705"
@@ -601,12 +599,12 @@
        y="33.194637"
        ry="0" />
     <rect
-       style="fill:none;fill-opacity:1;stroke:#54899c;stroke-width:0.765;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;fill-opacity:1;stroke:#54899c;stroke-width:0.620308;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect201491"
-       width="141.1037"
-       height="92.20742"
-       x="198.57387"
-       y="32.90807" />
+       width="141.2484"
+       height="60.563759"
+       x="198.50153"
+       y="32.835724" />
     <rect
        style="fill:none;fill-opacity:1;stroke:#937294;stroke-width:0.765;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect201639"
@@ -614,5 +612,63 @@
        height="65.658417"
        x="346.88809"
        y="32.947468" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#5c7294;stroke-width:0.765;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect202608"
+       width="28.473391"
+       height="12.027665"
+       x="149.2688"
+       y="79.187851" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#5c7294;stroke-width:0.955198;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect202745"
+       width="28.055557"
+       height="19.215437"
+       x="134.50597"
+       y="56.91906" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#5c7294;stroke-width:0.765;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect202747"
+       width="30.114931"
+       height="13.659106"
+       x="460.91443"
+       y="48.642933" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#7e8585;stroke-width:0.765;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect202804"
+       width="23.128038"
+       height="12.934886"
+       x="350.55551"
+       y="49.327682" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#7e8585;stroke-width:0.765;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect203774"
+       width="32.27401"
+       height="12.068992"
+       x="30.220516"
+       y="78.781456" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 93.022813,61.957063 h 8.489837"
+       id="path204073" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 45.780205,78.599614 v -8.97676 h 84.790745"
+       id="path211226" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#eac885;stroke-width:1.40224;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect224622"
+       width="491.43475"
+       height="15.993841"
+       x="7.6911492"
+       y="4.2756448" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,8.767783,36.358712)"
+       id="text228353"
+       style="font-size:20px;line-height:1.25;font-family:sans-serif;writing-mode:vertical-lr;white-space:pre;shape-inside:url(#rect228355)"><tspan
+         x="1930.3633"
+         y="223.03711"
+         id="tspan240052">Interface</tspan></text>
   </g>
 </svg>
