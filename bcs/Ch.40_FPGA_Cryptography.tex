@@ -23,6 +23,7 @@ try to minimize the amount of modulo operations with operations such as
 conditional assignment.
 
 \begin{itemize}
+
     \item
         Polynomial addition and subtraction is the most common operation in the
         R-LWE cryptosystem. It uses a hardware circuit to do the polynomial
@@ -32,11 +33,35 @@ conditional assignment.
     \item
         Scalar multiplication uses multiplexers to once again save LUTs as
         $m$ is an $n$-bit vector, when computing $t\cdot m$ we choose
-        essentially$t$ or $0$.
+        essentially $t$ or $0$.
 
     \item
-        Scalar division to the nearest integer
+        Let $d = (c_0 - s \cdot c_1)$ and $t = \frac{t}{2}$, we can implement
+        scalar division to the nearest integer by computing
+        \[|d - t| < \frac{t}{2} \quad ? \quad 1 \quad : \quad 0\]
+
+        As $|d - t|$ measures the distance between $d$ and $t$; if the
+        distance between the two is larger than $t / 2$ it means that $d$ and
+        $t$ are far from each other, this means that $\frac{d}{t}$ the nearest
+        integer will be $0$. On the other hand if $|d - t|$ is smaller than $t
+        / 2$ it means that the nearest integer will be $1$.
+
     \item
-        Polynomial multiplication
+        Polynomial multiplication is by far the most complex of these modules.
+        Multiplication can change the degree of the polynomial, which increases
+        the complexity of the component. It uses \textit{Number Theoretic
+        Transform} (NTT) which is a generalized version of FFT over the ring
+        $R_q = R / \langle q \rangle = \bZ_q [x] / (x^n + 1)$ to compute the
+        polynomials. The NTT equation is the following: let $\omega$ be the
+        $n$-th root of unity in the field of the polynomial ring.
+
+        \[ X_i = \sum^{n-1}_{k=0} x_k \cdot \omega^{i\cdot k} \]
+
+        $\omega$ has to satisfy the following conditions, firstly
+        $\omega^n = 1 \mod q$. Secondly the period of
+        $\omega^i \ \forall i \in \{1, 2, 3, \ldots, n - 1\}$ has to be exactly
+        $n$.
 
 \end{itemize}
+
+
