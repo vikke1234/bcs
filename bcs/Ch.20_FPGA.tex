@@ -5,6 +5,8 @@ different ways of configuring them. Modern FPGAs may also include of other
 components, such as processors and multipliers which is out of the scope of
 the present thesis.
 
+
+
 \section{Lookup tables}
 
 \textit{Lookup tables} (LUT), are crucial component of FPGAs. We will first
@@ -32,9 +34,9 @@ introduce some preliminary information on \textit{boolean functions}.
     Hereon the addition $+$ and multiplication $\cdot$ is understood as the
     usual boolean addition and multiplication.
 
-    \[
+    \begin{equation} \label{eq:examle_eq}
     f \colon \{0,\ 1\}^3 \rightarrow \{0,\ 1\}, \quad (A, B, C) \mapsto A + B \cdot C
-    \]
+    \end{equation}
 
     There are $2^3 = 8$ possible values for the function $f$. Table
     \ref{tab:example_truth_table} represents the truth table. We'll look at how
@@ -79,6 +81,42 @@ introduce some preliminary information on \textit{boolean functions}.
 
 \end{definition}
 
+To implement Equation \ref{eq:examle_eq} for an \textit{Application Specific Integrated
+Circuit} (ASIC), we could do the following; in Figure
+\ref{fig:logic_gate_explanation} we can see how logic gates behave when
+different signals are sent through them. When we deal with boolean functions
+addition is an OR gate, multiplication is an AND gate and negation is a NOT
+gate. So if we go back to Example \ref{ex:boolean_function} we can represent it
+using an OR and an AND gate as seen in \ref{fig:logic_gate_impl}. We first
+calculate $B \cdot C$ after which we send the result to the or gate and
+calculate $A + B \cdot C$. ASICs then use this to implement all boolean
+functions, since they do not need to be able to be reconfigured they can be
+made more efficient.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{.4\textwidth}
+        \centering
+        \includegraphics[scale=0.13]{logic_gate_explanation.jpg}
+        \caption{An explanation of how different logic gates behave\citep{LogicGateBehavior}}
+        \label{fig:logic_gate_explanation}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{.4\textwidth}
+        \centering
+        \includegraphics[scale=0.6]{circuit.png}
+        \caption{Logic gate implementation of the function}
+        \label{fig:logic_gate_impl}
+    \end{subfigure}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{fpga_structure.png}
+    \caption{An example of an island-style FPGA\citep{M.MorrisMano3}}
+    \label{fig:fpga_structure}
+\end{figure}
+
 \subsection{Delay flip-flop}
 LUTs alone are not enough to be able to be Turing complete as we cannot store
 state. What we need is some way to store information, this is where the
@@ -110,47 +148,6 @@ third cycle.
     \end{subfigure}
 \end{figure}
 
-\subsection{Application specific integrated circuits}
-As briefly explained in the introduction, if we after all this needed even more
-speed we could implement this as an \textit{Application Specific Integrated
-Circuit} (ASIC). Before we go into more detail, we'll give a brief overview
-about logic gates. In Figure \ref{fig:logic_gate_explanation} we can see how
-logic gates behave when different signals are sent through them. When we deal
-with boolean functions addition is an OR gate, multiplication is an AND gate
-and negation is a NOT gate. So if we go back to Example
-\ref{ex:boolean_function} we can represent it using an OR and an AND gate as
-seen in \ref{fig:logic_gate_impl}. We first calculate $B \cdot C$ after which
-we send the result to the or gate and calculate $A + B \cdot C$. ASICs then use
-this to implement all boolean functions, since they do not need to be able
-to be reconfigured they can be made more efficient.
-
-When making ASICs manufacturers often first create FPGA versions of them where
-they create an FPGA with LUTs for each gate. Once they're tested thoroughly
-they're made into ASICs.
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{.4\textwidth}
-        \centering
-        \includegraphics[scale=0.13]{logic_gate_explanation.jpg}
-        \caption{An explanation of how different logic gates behave\citep{LogicGateBehavior}}
-        \label{fig:logic_gate_explanation}
-    \end{subfigure}
-    ~
-    \begin{subfigure}[b]{.4\textwidth}
-        \centering
-        \includegraphics[scale=0.6]{circuit.png}
-        \caption{Logic gate implementation of the function}
-        \label{fig:logic_gate_impl}
-    \end{subfigure}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.5]{fpga_structure.png}
-    \caption{An example of an island-style FPGA\citep{M.MorrisMano3}}
-    \label{fig:fpga_structure}
-\end{figure}
 
 \section{Input/Output blocks}
 Input/Output blocks (I/O blocks, IOB) are blocks that are placed around the
