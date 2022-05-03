@@ -26,11 +26,11 @@ random number generator works is out of the scope of this paper.
 \begin{itemize}
 
     \item
-        Polynomial addition (Figure \ref{fig:poly_add}) and subtraction (Figure
-        \ref{fig:poly_sub}) are the most common operations in the
-        R-LWE cryptosystem and thus need to be fast. It uses a hardware circuit
-        to do the polynomial addition/subtraction and conditional assignment to
-        avoid using the modulo operation.
+        In Figure \ref{fig:poly_add} and Figure \ref{fig:poly_sub} implement
+        polynomial addition and subtraction respectively. They are the most
+        common operations in the R-LWE cryptosystem and thus need to be fast.
+        We compute the operation component wise and to avoid using the modulo
+        operation we use conditional assignment.
 
         \begin{figure}[H]
             \centering
@@ -53,9 +53,9 @@ random number generator works is out of the scope of this paper.
         \end{figure}
 
     \item
-        Scalar multiplication (Figure \ref{fig:scalar_div}) uses multiplexers to once again save LUTs as
-        $m$ is an $n$-bit vector, when computing $t\cdot m$ we essentially
-        choose $t$ or $0$.
+        In Figure \ref{fig:scalar_mul} we implement scalar multiplication using
+        multiplexers to save LUTs. Because $m$ is an $n$-bit vector, when
+        computing $t\cdot m$ we essentially choose $t$ or $0$.
 
         \begin{figure}[H]
             \centering
@@ -65,11 +65,13 @@ random number generator works is out of the scope of this paper.
         \end{figure}
 
     \item
-        Let $d = (c_0 - s \cdot c_1)$ and $t = \frac{t}{2}$, we can implement
-        scalar division to the nearest integer by computing
+        In Figure \ref{fig:scalar_div} we implement scalar division, let
+        $d = (c_0 - s \cdot c_1)$ and $t = \frac{t}{2}$. When we want to
+        compute the nearest integer we can compute
+
         \[|d - t| < \frac{t}{2} \quad ? \quad 1 \quad : \quad 0\]
 
-        As $|d - t|$ measures the distance between $d$ and $t$; if the
+        Since $|d - t|$ measures the distance between $d$ and $t$; if the
         distance between the two is larger than $t / 2$ it means that $d$ and
         $t$ are far from each other, this means that $\frac{d}{t}$ the nearest
         integer will be $0$. On the other hand if $|d - t|$ is smaller than $t
