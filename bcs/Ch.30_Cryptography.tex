@@ -94,17 +94,18 @@ problem, by solving LWE we could solve the shortest vector problem in lattices
 
 
 \begin{definition}[\textbf{Learning With Errors}]
-    Let $\chi$ be a discrete Gaussian
-    distribution. Alice first picks a public vector $a \in (\bZ / q\bZ)^n$, a
-    secret vector $s \in (\bZ / q\bZ)^n$ and an error $\chi \rightarrow e$.
-    Alice then computes $b$.
 
-    \[ b = a \cdot s + e \]
+    Let $s \in \bZ^n_q$, $A_{s, \chi}$ is the probability distribution on
+    $\bZ^n_q \times \bZ_q$ when choosing $a \in \bZ^n_q$ at random and $e \in
+    \bZ_q$ from $\chi$. Let $b = a \cdot s + e$, output $(a,b)$.
 
-    We then send $a$ and $b$ to Bob.
+
 \end{definition}
 
-LWE is a slow problem  slow for a computer to compute, this is where
+An example of a problem within LWE is the search problem; given a sufficient
+amount of samples from $A_{s, \chi}$ find $s$.
+
+LWE is a hard problem  slow for a computer to compute, this is where
 \textit{Ring Learning With Errors} (R-LWE) comes in. By doing multiplication
 over the ring $\bZ^n_q$ where the ring $R_q = \bZ[x] / (x^n + 1)$, we can we can
 reduce the complexity from $\mathcal{O}(n^2)$ to $\mathcal{O}(n\log n)$.
@@ -117,7 +118,9 @@ generation, encryption and decryption.
     R-LWE is built around polynomial arithmetic, the general definition of a
     polynomial is the following.
 
-    \[ g(x) = a_0 + a_1 \cdot x + \ldots + a_{n-1} \cdot x^{n-1} + a_n \cdot x^n \]
+    \[
+        g(x) = a_0 + a_1 \cdot x + \ldots + a_{n-1} \cdot x^{n-1} + a_n \cdot x^n
+    \]
 
     Let the ring $R_q^n = \bZ[x]/(x^n + 1)$ where $x^n + 1$ is an irreducible
     polynomial, $n$ is a power of 2. Let $q \equiv 1\ (\text{mod } 2n)$ be a
