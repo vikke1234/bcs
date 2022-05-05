@@ -53,10 +53,14 @@ integer factorization problem.
 
 \end{definition}
 
-Unfortunately, such problems were proven to be possible to break with a
-sufficiently large quantum computer in polynomial time \citep{ShorQuantum}. In
-the next section we will discuss some examples of post-quantum resistant
-cryptography.
+% TODO talk about public key cryptography
+Public key cryptography extensively use these problems. Most of our key
+exchange methods such as the Diffie and Hellman key exchange uses it. While RSA
+uses the integer factorization problem. Unfortunately, such problems were
+proven to be possible to break with a sufficiently large quantum computer in
+polynomial time \citep{ShorQuantum}, which is simply a matter of time before it
+happens. In the next section we will discuss some examples of post-quantum
+resistant cryptography.
 
 
 \section{Post-quantum cryptography}
@@ -84,10 +88,13 @@ We can define the shortest vector in the lattice $L$ to be
 $\lambda(L) = \min || y ||, \quad \forall y \in L$ where
 $||x|| = \{\sqrt{\sum_{i=0}^n x^2_i}\}, \quad x = (x_1, \ldots, x_n)$.
 
-There exist a few problems using lattices that are believed to be NP-hard for
-quantum computers. One of these is the shortest vector problem: let $\gamma \in
-\mathbb{R}_+$, find $x \in L$
-such that $||x|| \leq \gamma \lambda(L)$
+There exist a few problems using lattices that are believed to be hard for
+quantum computers. An example of such problems is the shortest vector problem
+which is defined by: let $\gamma \in \mathbb{R}_+$, find $x \in L$ such that
+$||x|| \leq \gamma \lambda(L)$ \citep{ajtai1998shortest}. The shortest vector
+problem can be broken in polynomial time for any $\gamma \leq
+(\frac{4}{3})^{n/3}$ using the \textit{Lenstra-Lenstra-Lovasz} (LLL) algorithm.
+
 
 In 2005 Regev showed that \textit{Learning With Errors} (LWE) is a hard
 problem, by solving LWE we could solve the shortest vector problem in lattices
@@ -106,10 +113,12 @@ problem, by solving LWE we could solve the shortest vector problem in lattices
 An example of a problem within LWE is the search problem; given a sufficient
 amount of samples from $A_{s, \chi}$ find $s$.
 
-LWE is a hard problem  slow for a computer to compute, this is where
-\textit{Ring Learning With Errors} (R-LWE) comes in. By doing multiplication
-over the ring $\bZ^n_q$ where the ring $R_q = \bZ[x] / (x^n + 1)$, we can we can
-reduce the complexity from $\mathcal{O}(n^2)$ to $\mathcal{O}(n\log n)$.
+LWE has a complexity of $\mathcal{O}(n^2)$, when encrypting large amounts of
+data complexity is not sufficient. A common way to reduce complexity when
+dealing with matrices is to view them as polynomials. By viewing them as
+coefficients of polynomials we can use a generalized form of the
+\textit{Discrete Fourier Transform}. This reduces the complexity to
+$\mathcal{O}(n \log n)$ though more on that later.
 
 In \citep{FPGA_Post_Quantum_Primitives} we get the following definitions for key
 generation, encryption and decryption.
