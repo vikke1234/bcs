@@ -4,14 +4,6 @@ became of huge interest. Hence the motivation behind developing faster FPGA
 implementation of cryptographic schemes. In this chapter we are giving an
 overview of optimized FPGA implementations for R-LWE.
 
-\begin{figure}[H]
-
-    \includegraphics[scale=0.25]{high_level_impl.png}
-    \caption{An optimized high level implementation of the three building
-    blocks for a public key cryptosystem \citep{FPGA_Post_Quantum_Primitives}}
-    \label{fig:high_level_pkc_impl}
-
-\end{figure}
 
 The implementation as seen in Figure \ref{fig:high_level_pkc_impl} consist of
 three different modules: key generation, encryption and decryption. These
@@ -22,6 +14,15 @@ hundred LUTs. Which is why these designs try to minimize the amount of modulo
 operations with operations such as conditional assignment
 \citep{FPGA_Post_Quantum_Primitives}. The way the noise sampler and the true
 random number generator works is out of the scope of this paper.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.40, angle=90]{high_level_impl.png}
+    \caption{An optimized high level implementation of the three building
+    blocks for a public key cryptosystem \citep{FPGA_Post_Quantum_Primitives}}
+    \label{fig:high_level_pkc_impl}
+
+\end{figure}
 
 \begin{itemize}
 
@@ -45,7 +46,7 @@ random number generator works is out of the scope of this paper.
             ~
             \begin{subfigure}[b]{0.4\textwidth}
                 \centering
-                \includegraphics[scale=0.4]{polynomial_subtraction.png}
+                \includegraphics[scale=0.5]{polynomial_subtraction.png}
                 \caption{Polynomial subtraction
                 \citep{FPGA_Post_Quantum_Primitives}}
                 \label{fig:poly_sub}
@@ -87,18 +88,26 @@ random number generator works is out of the scope of this paper.
         Polynomial multiplication is by far the most complex of these modules.
         Multiplication can change the degree of the polynomial, which increases
         the complexity of the component. It uses \textit{Number Theoretic
-        Transform} (NTT) which is a generalized version of FFT over the ring
-        $R_q = R / \langle q \rangle = \bZ_q [x] / (x^n + 1)$ to compute the
-        polynomials. The NTT equation is the following: let $\omega$ be the
-        $n$-th root of unity for the polynomial $x^n + 1$. NTT is defined as
-        the following equation
+        Transform} (NTT) which is a generalized version of the discrete Fourier
+        transform over the ring $R_q = R / \langle q \rangle = \bZ_q [x] / (x^n
+        + 1)$ to compute the polynomials. The NTT equation is the following:
+        let $\omega$ be the $n$-th root of unity for the polynomial $x^n + 1$.
+        NTT is defined as the following equation
 
-        \[ X_i = \sum^{n-1}_{k=0} x_k \cdot \omega^{i\cdot k}. \]
+        \[ X_i = \sum^{n-1}_{j=0} x_j \cdot \omega^{i\cdot j}. \]
 
         $\omega$ has to satisfy the following conditions, firstly
         $\omega^n = 1 \mod q$. Secondly the period of
         $\omega^i \ \forall i \in \{1, 2, 3, \ldots, n - 1\}$ has to be exactly
         $n$.
+
+        After computing the NTT of the vectors, we compute component wise
+        multiplication. Using the \textit{Inverse NTT} (INTT) we convert it
+        back to the correct form.
+
+        The INTT is defined as \[X_i =
+            n^{-1} \sum^{n-1}_{j=0} x_j \omega^{-ij}.\]
+
 
         \begin{figure}[H]
             \centering
@@ -121,10 +130,10 @@ random number generator works is out of the scope of this paper.
 \end{itemize}
 
 
-The number that is generally considered safe to use for $q$ is $q = 12289$. Although any $q > 10 000$
-with each polynomial having $128 - 1024$ coefficients gets you the security
-level of at least 112 bits as recommended by NIST
-\citep{FPGA_Post_Quantum_Primitives}. This cryptosystem was implemented on a
+The number that is generally considered safe to use for $q$ is $q = 12289$.
+Although any $q > 10 000$ with each polynomial having $128 - 1024$ coefficients
+gets you the security level of at least 112 bits as recommended by NIST
+\citep{barker2006recommendation}. This cryptosystem was implemented on a
 Zynq-7000 FPGA, we can see the LUTs needed for different sizes of $n$ in Table
 \ref{tab:hardwarecost}.
 
