@@ -1,27 +1,5 @@
 \chapter{Conclusion\label{conclusion}}
-
-$q = 12289$ is considered a safe prime number to use. Although any $q > 10 000$
-with each polynomial having $128 - 1024$ coefficients gets you the security
-level of at least 112 bits as recommended by NIST
-\citep{FPGA_Post_Quantum_Primitives}. This cryptosystem was implemented on a
-Zynq-7000 FPGA, we can see the LUTs needed for different sizes of $n$ in Table
-\ref{tab:hardwarecost}.
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l|ll}
-        \textit{n} & LUTs   & Registers \\ \hline
-        128        & 66251  & 16805     \\
-        256        & 11490  & 33138     \\
-        512        & 227458 & 65643     \\
-        1024       & 426402 & 130540
-    \end{tabular}
-    \caption{Hardware cost using only LUTs where $q = 12289$
-    \citep{FPGA_Post_Quantum_Primitives}}
-    \label{tab:hardwarecost}
-\end{table}
-
-The presented thesis attempts to lower the barrier of entry to post quantum
-cryptography using FPGAs. We also present efficient hardware modules that are
-roughly $20\% - 78\%$ faster than the previous implementations
-\citep{FPGA_Post_Quantum_Primitives}
+This thesis covers the basics of FPGAs and presents an example of a post
+quantum secure cryptosystem. We also present efficient hardware modules that
+are roughly $20\% - 78\%$ faster than the previous implementations
+\citep{FPGA_Post_Quantum_Primitives}.
