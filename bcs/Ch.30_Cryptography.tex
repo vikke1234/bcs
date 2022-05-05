@@ -73,9 +73,10 @@ theory. In this thesis we will mainly focus on lattice based cryptography.
 
 \begin{definition}
     A lattice in $\mathbb{R}^n$ is all of the combinations you can generate
-    from a given basis of independent vectors $B = \{v_1,\ \ldots,\ v_n\}$.
+    from a given basis of independent vectors $B = \{v_1,\ \ldots,\ v_n\}$. Let
+    the lattice $L$ be defined as
 
-    \[L = \left\{ \sum_{i = 0}^n a_iv_i \, | \, a_i \in \bZ \right\}\]
+    \[L = \left\{ \sum_{i = 0}^n a_iv_i \, | \, a_i \in \bZ \right\}.\]
 \end{definition}
 
 
@@ -116,10 +117,11 @@ generation, encryption and decryption.
 \begin{definition}[\textbf{Key exchange}]
     % TODO Remove R-LWE definitions
     R-LWE is built around polynomial arithmetic, the general definition of a
-    polynomial is the following.
+    polynomial is the following:
 
     \[
-        g(x) = a_0 + a_1 \cdot x + \ldots + a_{n-1} \cdot x^{n-1} + a_n \cdot x^n
+        g(x) = a_0 + a_1 \cdot x + \ldots + a_{n-1} \cdot x^{n-1} + a_n \cdot
+        x^n.
     \]
 
     Let the ring $R_q^n = \bZ[x]/(x^n + 1)$ where $x^n + 1$ is an irreducible
@@ -128,10 +130,9 @@ generation, encryption and decryption.
     \citep{FPGA_Post_Quantum_Primitives}.
 
     Let Alice pick a public vector $a \in R_q^n$, a secret vector $s \in R_q^n$
-    and an error $\chi \leftarrow e$. Using FFT to calculate quickly $b$, after
-    which $\{a,b\}$ is sent to Bob.
+    and an error $\chi \leftarrow e$. We calculate $b = a \cdot s + e$ and send
+    $\{a,b\}$ to Bob.
 
-    \[b = a \cdot s + e \]
 
 \end{definition}
 
@@ -152,7 +153,7 @@ generation, encryption and decryption.
 \begin{definition}[\textbf{Decryption}]
     Alice can decrypt the cipher by computing
 
-    \[m = \lceil (c_0 - c_1 \cdot s) / t) \rfloor \]
+    \[m = \lceil (c_0 - c_1 \cdot s) / t) \rfloor. \]
 
     Where $\lceil \rfloor$ is rounding to the nearest integer.
 \end{definition}
