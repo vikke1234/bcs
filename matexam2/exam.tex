@@ -1,0 +1,77 @@
+\documentclass{paper}
+\usepackage[T1]{fontenc}
+
+\title{Postkvantkryptografi}
+\author{Viktor Horsmanheimo}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+Kryptografi har alltid varit en viktig del i olika delar av samhället.Genom att
+kryptera tex text eller data, blir de oförståeliga till de dekrypteras med en
+nyckel. Kryptografi säkerställer att inte någon utomstående kan avlyssna och
+direkt tolka hemlig konversation eller data. En av de tidigaste formerna av
+kryptografi man upptäckt förekom i det forna romarriket. Julius Caesar använde
+sig av den så kallade Caesarchiffern. Chiffern fungerade genom att man flyttade
+på bokstäverna till exempel tre steg framåt.Då bir A, D och B blir E och så
+vidare. Detta är dock inte väldigt säkert i moderna tider, då nyckel- rymden
+bara är längden av alfabetet. Det var dock tillräckligt säkert på den tiden.
+Caesarchiffern är ett substitionschiffer. Det är en typ av chiffer där man
+substituerar bokstäver med andra bokstäver. Ett modernare exempel på ett
+substitionschiffer är Enigma som skapades under II världskriget i Tyskland. Vi
+kan se hur stor inverkan det hade på andra världs kriget då Alan Turing
+lyckades bryta Enigman och England kunde avlyssna all tysk kommunikation.
+
+År 1994 uppfann Peter Shor en algoritm, som i teorin kunde användas för att
+bryta våra nuvarande kryptografiska system om man hade en tillräckligt bra
+kvantdator. Även om vi inte ännu har en kvantdator som kan använda sig av
+algoritmen, är det bara en tidsfråga innan någon organisation skapar en
+kvantdator som klarar av det. Det finns även problemet med att avlyssna
+krypterad kommunikation nu. Avlyssnaren, som vill komma åt krypterad data, är
+tvungen att vänta tills en tillräckligt snabb kvantdator, som klarar av att
+bryta krypteringen utvecklas och avkrypterar informationen.
+
+Detta betyder att i princip all vår nuvarande kryptografi kommer att vara
+brytbar inom några decennier. Vi behöver alltså nya problem som tros vara svåra
+även kvantdatorer. På grund av att vi inte har något sätt att verifiera att ett
+problem är svårt för en kvantdator så kan vi dock inte vara alldeles säkra på
+att problemet inte är lösbart.
+
+\textit{National Institute of Standards and Technology} (NIST) ordnar en
+tävling där man försöker hitta nya kryptografiska system som är resistenta för
+kvantdatorer. Tävlingen är nu i tredje och sista omgången. Fyra av deltagarna
+använder sig av gitterbaserade lösningar. En, Classic McElice använder sig av
+felkorrigerande koder. Man lägger till fel, som man sedan med hjälp av rätt
+nyckel, enkelt kan ta bort. Vi kommer dock inte att fokusera desto mera på
+felkorrigerande koder.
+
+Ett gitter är den oändliga mängd punkter som man kan generera av en mängd
+linjärt oberoende vektorer. Det ser i princip ut som ett rutnät. Gitterbaserade
+problem är till exempel \textit{Lärande Med Fel}. Oded Regev bevisade år 2005
+att lärande med fel var ett svårt problem för kvantdatorer. Han bevisade att om
+man skulle kunna lösa lärande med fel snabbt, så skulle man även kunna lösa
+\textit{kortaste vektor problemet} snabbt. Kortaste vektor problemet är ett
+problem där man söker kortaste vektorn inom gittret. Om man ser på ett
+2-dimensionellt gitter är det väldigt enkelt att se den kortaste vektorn. Om
+man har tusentals dimensioner blir det dock väldigt svårt att räkna ut den
+kortaste vektorn, även för en dator.
+
+Lärande med fel fungerar på följande sätt: Alice väljer en allmän vektor $a$ av
+storlek $n$, en hemlig vektor $s$ av storlek $n$ och ett fel $e$. Alice räknar
+sedan ut $b = a \cdot s + e$. Alice publicerar sedan $a$ och $b$. Det Regev
+bevisade är att givet $a$ och $b$ så är det svårt att hitta $s$. Detta problem
+använder sig mycket av matrismultiplikation. Komplexiteten av
+matrismultiplikation är $\mathcal{O}(n^2)$. Genom att se på matriserna som
+polynom, kan vi minska komplexiteten till $\mathcal{O}(n \log n)$ med hjälp av
+\textit{Diskreta Fourier Transformen} (DFT). Kryptografiska systemen SABER och
+KYBER är finalister i NIST tävlingen som använder sig av lärande med fel.
+
+Det är estimerat att det tar cirka 10 till 20 år att förflytta sig till ett
+nytt kryptografiskt system. Det betyder att vi redan nu måste börja undersöka
+och byta till kryptografiska system som är resistenta mot kvantdatorer. I denna
+essä har vi presenterat olika alternativ som undersöks för tillfället. Det
+finns flera problem vi inte gick in på, som även tros vara kvant-resistenta,
+som till exempel att lösa multivariata-polynom.
+
+\end{document}
