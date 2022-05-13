@@ -1,6 +1,6 @@
 \chapter{FPGA\label{FPGA}}
 As briefly mentioned in the introduction, FPGAs consist of an array of logic
-gates. In this section we will give an overview on how such components work and
+gates. In this section, we will give an overview of how such components work and
 different ways of configuring them. Modern FPGAs may also include of other
 components, such as processors and multipliers which is out of the scope of
 the present thesis.
@@ -9,20 +9,20 @@ the present thesis.
 
 \section{Lookup tables}
 
-\textit{Lookup tables} (LUT), are crucial component of FPGAs. We will first
+\textit{Lookup tables} (LUT), are a crucial component of FPGAs. We will first
 introduce some preliminary information on \textit{boolean functions}.
 
 \begin{definition}
     A boolean function is a function that is defined on two element sets, i.e.
     $\{0,\ 1\}$, $\{\text{true},\ \text{false}\}$, ..., etc.
 
-    Without loss of generality we can define a boolean function $f$ to be a
+    Without loss of generality, we can define a boolean function $f$ to be a
     function of form
 
     \[f \colon \{0,\ 1\}^N \rightarrow \{0,\ 1\}, \quad \text{where $N$ is the
     size of the input}\]
 
-    Any boolean function can be represented by \textit{truth table}. A truth
+    Any boolean function can be represented by \a textit{truth table}. A truth
     table represents all the possible outputs when a function $f$ is evaluated.
     Consequently, the size of the truth table is $2^N$.
 \end{definition}
@@ -60,7 +60,7 @@ introduce some preliminary information on \textit{boolean functions}.
     \end{table}
 
 
-    In fact these truth tables are what allows the re-configuration of FPGAs, by
+    In fact, these truth tables are what allow the reconfiguration of FPGAs, by
     replacing the values in the truth tables we can make it evaluate a different
     function.
 \end{example}
@@ -70,8 +70,8 @@ introduce some preliminary information on \textit{boolean functions}.
     A \textit{lookup table} is a truth table that is represented in continuous
     memory. LUTs are implemented are using $N:1$ \textit{multiplexers}. A
     multiplexer is a component that simply maps multiple inputs into a single
-    output, the internals of it is out of the scope of this thesis. Using $N$-bits
-    of memory to store all the answers of the truth table in memory we can evaluate
+    output, the internals of it are out of the scope of this thesis. Using $N$-bits
+    of memory to store all the answers of the truth table in memory, we can evaluate
     any boolean function.
 
     In 1990 there was a study on how many inputs a LUT should have. If
@@ -85,9 +85,9 @@ To implement Equation \ref{eq:examle_eq} for an \textit{Application Specific Int
 Circuit} (ASIC), we could do the following; in Figure
 \ref{fig:logic_gate_explanation} we can see how logic gates behave when
 different signals are sent through them. When we deal with boolean functions
-addition is an OR gate, multiplication is an AND gate and negation is a NOT
+addition is an OR gate, multiplication is an AND gate, and negation is a NOT
 gate. So if we go back to Example \ref{ex:boolean_function} we can represent it
-using an OR and an AND gate as seen in \ref{fig:logic_gate_impl}. We first
+using an OR and an AND gate as seen in Figure \ref{fig:logic_gate_impl}. We first
 calculate $B \cdot C$ after which we send the result to the or gate and
 calculate $A + B \cdot C$. ASICs then use this to implement all boolean
 functions, since they do not need to be able to be reconfigured they can be
@@ -143,7 +143,7 @@ third cycle.
     \begin{subfigure}[b]{.4\textwidth}
         \centering
         \includegraphics[scale=0.13]{flipflop_functionality.png}
-        \caption{How a flip-flop reads output}
+        \caption{How a flip-flop reads the output}
         \label{fig:flipflop_func}
     \end{subfigure}
 \end{figure}
@@ -155,7 +155,7 @@ periphery of the FPGA. They control the interface between the FPGA and external
 circuits such as the clock and power usage.
 
 \section{Connection block}
-Along the wires by the logic blocks there are connection blocks (CB). These blocks
+Along the wires by the logic blocks, there are connection blocks (CB). These blocks
 control which data goes into and out of a logic block. They also connect the
 I/O blocks to the FPGA. In Figure \ref{fig:fpga_structure} we can see an
 example of where these connection blocks could be placed.
@@ -163,15 +163,15 @@ example of where these connection blocks could be placed.
 \section{Switch block}
 A switch block (switch box, SB) is a type of block that exists at every
 intersection in the wiring. As the name suggests it is built from a bunch of
-switches and it's job is to route the electricity between the logic blocks.
+switches and its job is to route the electricity between the logic blocks.
 There are different types of implementations for switch blocks, depending on
 the type it will have different levels of connectivity and efficiency. Though
-the specifics of this is out of the scope of this paper.
+the specifics of this are out of the scope of this paper.
 
 \section{Connections}
-There are multiple ways the logic blocks can be connected, for example Xilinx
+There are multiple ways the logic blocks can be connected, for example, Xilinx
 FPGAs have four different types of interconnects: long lines, hex lines, double
-lines and direct lines. The direct lines are to connect neighboring logic gates
+lines, and direct lines. The direct lines are to connect neighboring logic gates
 for fast transfer. Hex and double lines connect logic gates that are a medium
 length away. Long lines go along the entire chip and are often used for global
 signals \citep{HideharuAmano8}.
@@ -180,13 +180,13 @@ signals \citep{HideharuAmano8}.
 \section{Configuration}
 We will now give a brief overview on how these chips can be configured, though
 we are only going to focus on the three main technologies: static RAM, flash
-memory and antifuse. Depending on the technology used they can be more or less
+memory, and antifuse. Depending on the technology used they can be more or less
 configurable.
 
 \subsection{Static RAM}
-Static RAM, or SRAM is a very common way to handle configuration. It is great
-because it is fast and has infinite reconfiguration. The issues with SRAM is
-that it is volatile which means that if power is lost so is the configuration.
+\textit{Static RAM} (SRAM) is a very common way to handle configuration. It is great
+because it is fast and has infinite reconfiguration. There are some issues with SRAM,
+it is volatile which means that if power is lost so is the configuration.
 Another issue is power consumption, as the SRAM cell contains 6-12 transistors
 compared to flash memory which only requires roughly two transistors
 \citep{HideharuAmano8}.
@@ -194,7 +194,7 @@ compared to flash memory which only requires roughly two transistors
 \subsection{Flash memory}
 Flash memory is a way to store the configuration in memory without needing
 power for the chip to remember it. It works by having electrically erasable
-programmable read-only memory, it's benefit is that the configuration can be
+programmable read-only memory, its benefit is that the configuration can be
 remembered even if the device is powered off. The downside is that there is only
 a limited amount of writes before it fails and that flash is often slower at
 writing than SRAM \citep{M.MorrisMano3}.
@@ -202,7 +202,7 @@ writing than SRAM \citep{M.MorrisMano3}.
 \subsection{Antifuse}
 An antifuse is the opposite of a fuse, it works by having high resistance and
 not allowing electricity to pass until the fuse is blown. This technology is
-very reliable and rarely corrupts, which is why it is often used in places with
-for example radiation \citep[Ch. 1]{ScottHauckAndreDeHon5}. The down side of antifuses is that it can only be
+very reliable and rarely corrupts, so it is often used in places with
+radiation \citep[Ch. 1]{ScottHauckAndreDeHon5}. The downside of antifuses is that they can only be
 programmed once, after it's programmed the fuses are blown and can not be
 restored.

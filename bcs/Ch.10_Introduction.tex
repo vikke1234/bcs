@@ -1,10 +1,10 @@
 \chapter{Introduction\label{intro}}
 
 \textit{Field Programmable Gate Arrays} (FPGA) are chips that unlike standard
-ones such as CPUs, are programmable after manufacturing. Because of this they
+ones such as CPUs, are programmable after manufacturing. Because of this, they
 have become increasingly more popular in the past few decades. FPGAs consist of
 logic gate arrays which in theory can evaluate any boolean function. In this
-thesis we will give an overview on FPGAs with a focus on cryptography.
+thesis, we will give an overview on FPGAs with a focus on cryptography.
 
 FPGAs were developed in the 80s by Altera, at that time they were not very
 practical due to the size of the transistors being very large. This meant that
@@ -12,7 +12,7 @@ a chip could not fit many transistors and were limited in what they could do.
 Moore's law states that the transistor size halves every two years, this has
 affected FPGAs as well and they now contain enough transistors to compete with
 \textit{Application Specific Integrated Circuits} (ASIC). An ASIC is a type of
-hardware that is made specifically for a task, for example cryptographic
+hardware that is made specifically for a task, for example, cryptographic
 currency mining hardware. These chips are in general faster and use less energy
 than FPGAs if the manufacturer is working with the latest technology. Design
 mistakes in ASICs are
@@ -20,10 +20,11 @@ costly. It is extremely expensive to rectify mistakes that end up in production
 hardware. This is where FPGAs show their versatility as they are
 reprogrammable and can be used to detect and correct design errors. Once the
 chip has been verified that it works, it can be implemented as an ASIC. This
-is an effective method of producing bug free ASICs.
+is an effective method of producing bug-free ASICs.
 
 \section{Outline\label{outline}}
 In Chapter \ref{FPGA} we will go into detail about how FPGAs work internally,
-how they are configured and the technologies behind it. In Chapter \ref{crypto}
-we will give an overview about symmetric, asymmetric cryptography and how
-reconfigurable hardware can be used with it.
+how they are configured, and the technologies behind them. In Chapter \ref{crypto}
+we will give a brief overview of cryptography, the issues quantum computers bring,
+and solutions for these problems. In Chapter \ref{FPGA_crypto} we will show 
+implementations of post-quantum cryptosystems.
