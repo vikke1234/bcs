@@ -1,30 +1,36 @@
 \chapter{Introduction\label{intro}}
 
 \textit{Field Programmable Gate Arrays} (FPGA) are chips that unlike standard
-ones such as CPUs, are programmable after manufacturing. Because of this, they
-have become increasingly more popular in the past few decades. FPGAs consist of
-logic gate arrays which in theory can evaluate any boolean function. In this
-thesis, we will give an overview on FPGAs with a focus on cryptography.
+ones such as CPUs, are programmable after manufacturing. Because of property,
+FPGAs have become increasingly more popular in the past few decades. FPGAs
+consist of logic gate arrays which in theory can evaluate any boolean function.
+In this thesis, we will give an overview on FPGAs with a focus on post-quantum
+cryptography.
 
 FPGAs were developed in the 80s by Altera, at that time they were not very
-practical due to the size of the transistors being very large. This meant that
+practical due to the size of the transistors being very large. This means that
 a chip could not fit many transistors and were limited in what they could do.
 Moore's law states that the transistor size halves every two years, this has
 affected FPGAs as well and they now contain enough transistors to compete with
 \textit{Application Specific Integrated Circuits} (ASIC). An ASIC is a type of
-hardware that is made specifically for a task, for example, cryptographic
-currency mining hardware. These chips are in general faster and use less energy
-than FPGAs if the manufacturer is working with the latest technology. Design
-mistakes in ASICs are
-costly. It is extremely expensive to rectify mistakes that end up in production
-hardware. This is where FPGAs show their versatility as they are
-reprogrammable and can be used to detect and correct design errors. Once the
-chip has been verified that it works, it can be implemented as an ASIC. This
-is an effective method of producing bug-free ASICs.
+hardware that is made specifically for a given task, for example,
+cryptocurrency mining hardware. These chips are in general faster and use less
+energy than FPGAs if the manufacturer is working with the latest technology.
+However design mistakes in ASICs are costly and it is extremely expensive to
+rectify mistakes that end up in produced hardware. This is where FPGAs show
+their versatility as they are reprogrammable and can be used to detect and
+correct design errors. Once the chip has been verified that it works, it can be
+implemented as an ASIC. This is an effective method of producing bug-free
+ASICs.
 
-\section{Outline\label{outline}}
+With the recent development of quantum computers, the problems we considered
+hard are no longer hard. This means we will need new problems, examples of
+these problems are error correcting codes, lattice based cryptography and
+multivariate polynomials.
+
 In Chapter \ref{FPGA} we will go into detail about how FPGAs work internally,
-how they are configured, and the technologies behind them. In Chapter \ref{crypto}
-we will give a brief overview of cryptography, the issues quantum computers bring,
-and solutions for these problems. In Chapter \ref{FPGA_crypto} we will show 
-implementations of post-quantum cryptosystems.
+how they are configured, and the technologies behind them. In Chapter
+\ref{crypto} we will give a brief overview on cryptography, the issues quantum
+computers bring, and solutions for these problems. Finally in Chapter
+\ref{FPGA_crypto} we will show an example of a fast implementation of a
+post-quantum cryptosystems.

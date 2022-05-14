@@ -1,7 +1,7 @@
 \chapter{Cryptography\label{crypto}}
 In this chapter we will discuss different forms of cryptography and the
 mathematics behind it. Cryptography has been used since ancient times to secure
-communication. One of the earliest forms of cryptography is the Caesar cipher,
+communication. One of the earliest cryptographic schemes is the Caesar cipher,
 invented by Julius Caesar in ancient Rome. The Caesar cipher is a
 \textit{secret-key cipher}\footnote{A symmetric cipher}. A symmetric cipher is
 a cipher where users agree on a key that is used to both encrypt and decrypt
@@ -19,7 +19,7 @@ key cryptography} was developed to solve the issue of key exchange.
 Cryptography was revolutionized in the 70s when the \textit{Diffie and Hellman
 key exchange} and RSA were invented. It solved the issues of exchanging keys.
 Public key cryptography, also know as \textit{asymmetric cryptography}
-is a type of cryptography that works requiring two keys (in contrast with
+is a type of cryptography that requires two keys (in contrast with
 symmetric cryptography), a public- and a private key that are used for
 encryption and decryption. As the name implies, the public key is known to
 everyone while the private key should remain secret. We illustrate this by the
@@ -29,27 +29,27 @@ following generic example of public key encryption.
     Assume first that Alice generated a pair of public and secret keys denoted
     by pk and sk respectively. Alice then publishes the public key. Suppose that
     Bob wants to send an encrypted message to Alice, Bob will use Alice's
-    public key pk to encrypt with her secret key and sends it Alice. Finally
-    Alice will use sk to decrypt the received message.
+    public key pk to encrypt the message and produce a ciphertext. Finally
+    Alice will use sk to decrypt the received ciphertext.
 \end{example}
 
-Usually asymmetric encryptions are built of some hard mathematical problems.
-By proving that the only way to "break" the encryption is to solve some
-precise mathematical problem that is proved to be computationally hard.
+Usually asymmetric encryptions are built on top of some hard mathematical
+problems. By proving that the only way to "break" the encryption is to solve
+some precise mathematical problem that is proved to be computationally hard.
 Examples of such problems include the discrete logarithm problem and the
 integer factorization problem.
 
 \begin{definition}[\textbf{Discrete logarithm problem}]
 
-    Let $g$ be a generator for the group $G$ and $\forall x \in \mathbb{N}$,
-    given $x = g^m$, find $m$.
+    Let $g$ be a generator for a cyclic group $G$. The discrete logarithm
+    problem is the computational problem asking to find $m$ given $x = g^m$ in
+    $G$
 
 \end{definition}
 
 \begin{definition}[\textbf{Integer factorization problem}]
 
-    Given a product of two prime numbers $n$, factorize $n$ into the two prime
-    numbers $p$ and $q$.
+    Given an integer $n$, factorize $n$ into distinct prime powers.
 
 \end{definition}
 
@@ -57,10 +57,10 @@ integer factorization problem.
 Public key cryptography extensively use these problems. Most of our key
 exchange methods such as the Diffie and Hellman key exchange uses it. While RSA
 uses the integer factorization problem. Unfortunately, such problems were
-proven to be possible to break with a sufficiently large quantum computer in
-polynomial time \citep{ShorQuantum}, which is simply a matter of time before it
-happens. In the next section we will discuss some examples of post-quantum
-resistant cryptography.
+proven to be solvable with a sufficiently large quantum computer in
+polynomial time \citep{ShorQuantum}, for this reason alternatives were
+developed to replace our current public key crypto. In the next section we will
+discuss some examples of post-quantum resistant cryptography.
 
 
 \section{Post-quantum cryptography}
@@ -69,101 +69,102 @@ Due to the recent developments in quantum computing some of the problems
 considered hard, the discrete logarithm and integer factorization problem can
 be broken easily. Hence the interest in developing mathematical problems that
 are believed to be hard even for quantum computers. Examples of such problems
-arise from coding theory, systems of multi variable polynomials and lattice
+arise from coding theory, systems of multivariate polynomials and lattice
 theory. In this thesis we will mainly focus on lattice based cryptography.
 
 
 \subsection{Lattice based cryptography}
 
 \begin{definition}
-    A lattice in $\mathbb{R}^n$ is all of the combinations you can generate
-    from a given basis of independent vectors $B = \{v_1,\ \ldots,\ v_n\}$. Let
-    the lattice $L$ be defined as
+    Given a basis of independent vectors $B = \{v_1,\ \ldots,\ v_n\}$. A
+    lattice $L$ in $\bR^n$ is defined by
 
     \[L = \left\{ \sum_{i = 0}^n a_iv_i \, | \, a_i \in \bZ \right\}.\]
 \end{definition}
 
 
-We can define the shortest vector in the lattice $L$ to be
-$\lambda(L) = \min || y ||, \quad \forall y \in L$ where
+The shortest vector in the lattice $L$ is defined by
+$\lambda(L) = \min || y ||, \quad \forall y \in L$, where
 $||x|| = \{\sqrt{\sum_{i=0}^n x^2_i}\}, \quad x = (x_1, \ldots, x_n)$.
 
-There exist a few problems using lattices that are believed to be hard for
-quantum computers. An example of such problems is the shortest vector problem
-which is defined by: let $\gamma \in \mathbb{R}_+$, find $x \in L$ such that
-$||x|| \leq \gamma \lambda(L)$ \citep{ajtai1998shortest}. The shortest vector
-problem can be broken in polynomial time for any $\gamma \leq
-(\frac{4}{3})^{n/3}$ using the \textit{Lenstra-Lenstra-Lovasz} (LLL) algorithm.
+Few problems from lattice theory are believed to be hard for
+quantum computers. An example of such problems is the approximate shortest
+vector problem which is defined by: let $\gamma \in \mathbb{R}_+$, find $x \in
+L$ such that $||x|| \leq \gamma \lambda(L)$ \citep{ajtai1998shortest}. The
+approximate shortest vector problem can be solved in polynomial time for any
+$\gamma \geq (\frac{4}{3})^{n/3}$ using the \textit{Lenstra-Lenstra-Lovasz}
+(LLL) algorithm. To date no encryption algorithm is based directly on the
+shortest vector problem (SVP). Indeed, other problems are used in practice
+which in inherit it's hardness from SVP.
 
-
-In 2005 Regev showed that \textit{Learning With Errors} (LWE) is a hard
-problem, by solving LWE we could solve the shortest vector problem in lattices
-\citep{Regev05}.
-
+In 2005 Regev showed that the \textit{Learning With Errors} (LWE) problem is a
+hard problem, by showing that solving LWE implies solving the shortest vector
+problem in lattices \citep{Regev05}.
 
 \begin{definition}[\textbf{Learning With Errors}]
 
-    Let $s \in \bZ^n_q$, $A_{s, \chi}$ is the probability distribution on
-    $\bZ^n_q \times \bZ_q$ when choosing $a \in \bZ^n_q$ at random and $e \in
-    \bZ_q$ from $\chi$. Let $b = a \cdot s + e$, output $(a,b)$.
-
-
-\end{definition}
-
-An example of a problem within LWE is the search problem; given a sufficient
-amount of samples from $A_{s, \chi}$ find $s$.
-
-LWE has a complexity of $\mathcal{O}(n^2)$, when encrypting large amounts of
-data complexity is not sufficient. A common way to reduce complexity when
-dealing with matrices is to view them as polynomials. By viewing them as
-coefficients of polynomials we can use a generalized form of the
-\textit{Discrete Fourier Transform}. This reduces the complexity to
-$\mathcal{O}(n \log n)$ though more on that later.
-
-In \citep{FPGA_Post_Quantum_Primitives} we get the following definitions for key
-generation, encryption and decryption.
-
-\begin{definition}[\textbf{Key exchange}]
-    % TODO Remove R-LWE definitions
-    R-LWE is built around polynomial arithmetic, the general definition of a
-    polynomial is the following:
-
-    \[
-        g(x) = a_0 + a_1 \cdot x + \ldots + a_{n-1} \cdot x^{n-1} + a_n \cdot
-        x^n.
-    \]
-
-    Let the ring $R_q^n = \bZ[x]/(x^n + 1)$ where $x^n + 1$ is an irreducible
-    polynomial, $n$ is a power of 2. Let $q \equiv 1\ (\text{mod } 2n)$ be a
-    large prime number and $\chi$ a Gaussian distribution
-    \citep{FPGA_Post_Quantum_Primitives}.
-
-    Let Alice pick a public vector $a \in R_q^n$, a secret vector $s \in R_q^n$
-    and an error $\chi \leftarrow e$. We calculate $b = a \cdot s + e$ and send
-    $\{a,b\}$ to Bob.
-
+    Let $s \in \bZ^n_q$ and let $\chi$ be a probability distribution, we define
+    $A_{s, \chi}$ to be the probability distribution on $\bZ^n_q \times \bZ_q$.
+    When choosing $a \in \bZ^n_q$ at random and $e \in \bZ_q$ from $\chi$. Let
+    $b = a \cdot s + e \mod q$, output $(a,b)$.
 
 \end{definition}
 
-\begin{definition}[\textbf{Encryption}]
-    Let $t = \lfloor \frac{q}{2} \rfloor, \quad r_0,\ r_1,\ r_2
-    \leftarrow \chi$, Bob then converts the message $m$ to a bit string and
-    computes $\{c_0, c_1\}$.
+The \textit{search LWE} is defined by: given $a$ and $b$ find $s$.
+Note that producing LWE samples involves vector/matrix multiplication. A common
+way to reduce complexity when dealing with matrices is to view vectors as
+polynomials. By viewing them as coefficients of polynomials we can use a
+generalized form of the \textit{Discrete Fourier Transform}. This reduces the
+complexity of vector/matrix multiplication from $\mathcal{O}(n^2)$ to
+$\mathcal{O}(n \log n)$. In this case LWE is refered to as \textit{Ring-LWE}
+(R-LWE)
 
-    \[
-        \begin{cases}
-            c_0 = b \cdot r_0 + r2 + tm\\
-            c_1 = a \cdot r_0 + r1
-        \end{cases}
-    \]
+In \citep{regev09} we get the following present an encryption scheme based on
+R-LWE for key generation, encryption and decryption.
 
-\end{definition}
+\begin{enumerate}
+    \item \textbf{Key exchange:}
+        % TODO Remove R-LWE definitions
+        R-LWE is built around polynomial rings, the general
+        definition of a polynomial is the following:
 
-\begin{definition}[\textbf{Decryption}]
-    Alice can decrypt the cipher by computing
+        \[
+            g(x) = a_0 + a_1 \cdot x + \ldots + a_{n-1}
+                \cdot x^{n-1} + a_n \cdot x^n.
+        \]
 
-    \[m = \lceil (c_0 - c_1 \cdot s) / t) \rfloor. \]
+        Let the ring $R_q^n = \bZ[x]/(x^n + 1)$ where $x^n + 1$ is an
+        irreducible polynomial, $n$ is a power of 2. Let $q \equiv 1\
+        (\text{mod } 2n)$ be a large prime number and $\chi$ a Gaussian
+        distribution \citep{FPGA_Post_Quantum_Primitives}.
 
-    Where $\lceil \rfloor$ is rounding to the nearest integer.
-\end{definition}
+        Let Alice pick a public vector $a \in R_q^n$, a secret vector $s \in
+        R_q^n$ and an error $\chi \leftarrow e$. We calculate $b = a \cdot s +
+        e$ and send $\{a,b\}$ to Bob.
 
+    \item \textbf{Encryption:}
+
+        Let $t = \lfloor \frac{q}{2} \rfloor, \quad r_0,\ r_1,\ r_2
+        \leftarrow \chi$, Bob then converts the message $m$ to a bit string and
+        computes $\{c_0, c_1\}$.
+
+        \[
+            \begin{cases}
+                c_0 = b \cdot r_0 + r2 + tm\\
+                c_1 = a \cdot r_0 + r1
+            \end{cases}
+        \]
+
+    \item \textbf{Decryption:}
+
+        Alice can decrypt the cipher by computing
+
+        \[m = \lceil (c_0 - c_1 \cdot s) / t) \rfloor. \]
+
+        Where $\lceil \rfloor$ is rounding to the nearest integer.
+
+
+\end{enumerate}
+
+In the following chapter we will investigate an FPGA implementation of the
+above scheme.

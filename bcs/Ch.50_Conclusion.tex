@@ -1,13 +1,13 @@
 \chapter{Conclusion\label{conclusion}}
+In this thesis we present an efficient hardware implementation of the LWE
+cryptosystem. The design choices made for the implementation reduces the
+latency and hardware cost by a large margin. The polynomial multiplier played a
+large role in the optimization. The implementations are roughly $20\% - 78\%$
+faster than the previous implementations \citep{FPGA_Post_Quantum_Primitives}.
 
-This thesis covers the basics of FPGAs as well as a brief introduction of the public key 
-crypto system. We
-
-We can see that FPGAs are very useful as they
-provide the means to quickly compute matrix multiplication due to being very
-good at parallelization. FPGAs are also very useful currently as we do not know whether an algorithm
-is breakable by quantum computers, so creating ASICs of it is risky. Changing FPGA functionality
-is trivial, while recreating an ASIC implementation
-We also present efficient hardware modules that
-are roughly $20\% - 78\%$ faster than the previous implementations
-\citep{FPGA_Post_Quantum_Primitives}.
+We can see that FPGAs are very useful as they provide the means to quickly
+compute matrix multiplication due to being very good at parallelization. FPGAs
+are also very useful currently as we do not know whether an algorithm is
+breakable by quantum computers, so creating ASICs of it is risky. Changing FPGA
+functionality is trivial, while recreating an ASIC implementation. Future work
+would consist of implementing the NIST competition winner.
